@@ -1,0 +1,24 @@
+.btn {
+    padding: 11px 15px;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border:noe;
+    border-radius: 7px;
+    background-color: rgb(238, 209, 45);
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+}
+
+.fa-download {
+    margin-left: 5px;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 5px 5px 100px gold;
+}
+
+.btn:active {
+    transform: scale(1);
+}

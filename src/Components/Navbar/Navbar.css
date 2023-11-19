@@ -1,0 +1,163 @@
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+  html,
+  body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+      overflow-x: hidden;
+  }
+
+  nav {
+      width: 100vw;
+      height: 55px;
+      color: white;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: fixed;
+      top: 0%;
+      left: 0%;
+      z-index: 1;
+  }
+
+  .nav_active {
+      background-color: black;
+  }
+
+  li {
+      list-style: none;
+  }
+
+  .logo {
+      font-size: 1.3rem;
+      cursor: pointer;
+  }
+
+  .menu {
+      display: flex;
+      gap: 15px;
+  }
+
+  .nav_link {
+      padding: 8px 13px;
+      font-size: 1.05rem;
+      font-weight: 550;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all ease 0.3s;
+  }
+
+  .nav_link:hover {
+      background-color: rgb(252, 226, 80);
+  }
+
+  .hamburger {
+      display: flex;
+      flex-direction: column;
+      display: none;
+      position: relative;
+      z-index: 1;
+  }
+
+  .line {
+      height: 2px;
+      width: 20px;
+      background-color: white;
+      margin-top: 4px;
+  }
+
+  @media(max-width:900px) {
+
+      .logo {
+          font-size: 1.2rem;
+      }
+
+      .nav_link {
+          font-size: 0.95rem;
+      }
+  }
+
+
+  @media(max-width:700px) {
+      nav {
+          justify-content: space-between;
+      }
+
+      .logo {
+          margin-left: 50px;
+      }
+
+      .hamburger {
+          display: inline-block;
+          margin-right: 60px;
+          cursor: pointer;
+      }
+
+      .active {
+          background-color: transparent;
+          box-shadow: none;
+      }
+
+      .menu {
+          flex-direction: column;
+          position: absolute;
+          width: 100%;
+          text-align: center;
+          background-color: black;
+          transition: 0.4s ease-in-out;
+          right: 160%;
+          top: 7%;
+          transform: translate(10%, 7%);
+          transition: all ease 0.5s;
+      }
+
+      .menu.active {
+          right: 50%;
+          top: 7%;
+          transform: translate(50%, 7%);
+      }
+
+      nav ul li {
+          padding: 10px;
+          font-size: 1.5rem;
+      }
+
+  }
+
+  @media(max-width:430px) {
+     
+    .logo{
+        margin-left: 20px;
+    }
+
+    .hamburger{
+        margin-right: 20px;
+    }
+}  
+
+@media(max-width:375px) {
+
+    .menu.active {
+        right: 50%;
+        top: 7%;
+        transform: translate(47%, 7%);
+    }
+    
+}
+
+  @media(max-width:280px) {
+
+      .logo {
+          margin-left: 20px;
+      }
+
+      .hamburger {
+          margin-right: 20px;
+      }
+
+      .logo {
+          font-size: 1rem;
+      }
+  }
