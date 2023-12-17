@@ -137,7 +137,7 @@
         padding: 10px;
     }
 
-    
+
 }
 
 @media(max-width:435px) {
@@ -150,17 +150,18 @@
         padding-left: 30px;
     }
 
-    .skills_right{
+    .skills_right {
         flex-direction: column;
         align-items: center;
     }
 
-    .circle{
+    .circle {
         width: 180px;
         height: 180px;
     }
 
-    .circle_para,.percentage{
+    .circle_para,
+    .percentage {
         font-size: 1.8rem;
     }
 }

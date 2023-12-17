@@ -27,8 +27,8 @@ const Skills = ({ projects }) => {
 
           filteredProjects.length === 0 ? (<h1>No Project Found</h1>) : (
 
-            filteredProjects.map((item) => (
-              <ProjectCard key={item.id} name={item.name} description={item.description} img={item.image} url={item.url} />
+            filteredProjects.map((item,index) => (
+              <ProjectCard key={index} name={item.name} description={item.description} img={item.image} url={item.url} />
             ))
           )
         }

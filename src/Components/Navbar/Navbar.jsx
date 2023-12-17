@@ -21,7 +21,6 @@ const Navbar = () => {
   const [click, setClick] = useState(false);
 
   const btnClick = () => {
-    console.log("first")
     setClick(!click)
 
   }
