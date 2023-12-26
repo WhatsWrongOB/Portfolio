@@ -1,6 +1,6 @@
 import React from 'react'
 import './Home.css'
-import me from '../../Images/me.jpg'
+import me from '../../Images/me.jpeg'
 import { Link } from 'react-router-dom'
 
 const Home = () => {
@@ -8,7 +8,7 @@ const Home = () => {
     <section className="home">
       <div className="home_container">
         <div className="home_left_content">
-          <h3 className="home_heading">Hello, it's Me</h3>
+          <h3 className="home_heading">Hello,👋 it's Me</h3>
           <h1 className="home_heading_two">Obaid Ali <span>Siddiqui</span></h1>
           <h3 className="home_heading_three">And <span> I'm a Front</span>  End developer</h3>
           <p className="home_para">Front-end developer skilled in clean code and compelling design. I specialize in creating seamless user experiences.</p>

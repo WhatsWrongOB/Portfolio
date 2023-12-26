@@ -64,8 +64,8 @@ span {
 }
 
 .home_right_content {
-    width: 22%;
-    height: 50%;
+    width: 24%;
+    height: 52%;
     border-radius: 50%;
     margin-left: 110px;
     border: 1px solid rgb(252, 226, 80);
@@ -147,27 +147,6 @@ span {
     }
 
 }
-
-
-
-/* @media(max-width:695px) {
-
-    .home_heading,
-    .home_heading_three {
-        font-size: 1.1rem;
-    }
-
-    .home_heading_two {
-        font-size: 1.8rem;
-    }
-
-    .home_right_content {
-        width: 35%;
-        height: 50%;
-        margin-left: 55px;
-    }
-
-} */
 
 @media(max-width:700px) {
 
@@ -260,8 +239,8 @@ span {
     }
 
     .home_right_content {
-        width: 250px;
-        height: 250px;
+        width: 260px;
+        height: 280px;
         left: -7%;
     }
 
