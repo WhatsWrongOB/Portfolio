@@ -4,7 +4,7 @@ import axios from "axios";
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-  const Url = "https://backend-portfolio-green.vercel.app/";
+  const Url = "https://backend-portfolio-green.vercel.app";
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(false);
   const [deleteLoading, setdeleteLoading] = useState(false);
