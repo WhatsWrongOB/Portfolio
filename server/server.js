@@ -13,7 +13,7 @@ dotenv.config({ path: "./config/config.env" });
 
 const corsOptions = {
   origin: (origin, callback) => {
-    const allowedOrigins = ["https://ob-portfolio.vercel.app"];
+    const allowedOrigins = ["https://obaidali.netlify.app/"];
     if (allowedOrigins.includes(origin) || !origin) {
       callback(null, true);
     } else {
