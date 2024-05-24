@@ -14,11 +14,16 @@ dotenv.config({ path: "./config/config.env" });
 const corsOptions = {
   origin: (origin, callback) => {
     const allowedOrigins = ["https://ob-portfolio.vercel.app"];
-    const isAllowed = allowedOrigins.includes(origin);
-    callback(null, isAllowed ? origin : false);
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
   },
-  methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
+  methods: "GET, POST, PUT, DELETE, PATCH, OPTIONS",
   credentials: true,
+  allowedHeaders:
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization",
 };
 
 app.use(cors(corsOptions));
@@ -28,7 +33,7 @@ app.use(express.json());
 app.use("/auth", userRouter);
 app.use("/project", projectRouter);
 app.use("/contact", contactRouter);
-app.use(express.static('dist'));
+app.use(express.static("dist"));
 
 const PORT = process.env.PORT || 3000;
 
