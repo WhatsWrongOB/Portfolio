@@ -13,7 +13,7 @@ dotenv.config({ path: "./config/config.env" });
 
 const corsOptions = {
   origin: (origin, callback) => {
-    const allowedOrigins = ["http://localhost:5173"];
+    const allowedOrigins = ["https://ob-portfolio.vercel.app"];
     const isAllowed = allowedOrigins.includes(origin);
     callback(null, isAllowed ? origin : false);
   },
