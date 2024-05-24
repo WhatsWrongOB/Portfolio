@@ -1,69 +1,64 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-import { useStore } from '../Context'
+import React, { useState } from "react";
+import { useStore } from "../Context";
+import Form from "./Form";
+import DashCard from "./DashCard";
 import ClipLoader from "react-spinners/ClipLoader";
-import { toast } from 'react-toastify';
 
 const Dashboard = () => {
+  const { projects, deleteLoading } = useStore();
+  const [formType, setFormType] = useState("create");
+  const [updateId, setUpdateId] = useState(null);
 
-  const [name, setName] = useState('')
-  const [description, setDescription] = useState('')
-  const [technology, setTechnology] = useState('')
-  const [link, setLink] = useState('')
-  const { addProject, addLoading, logout } = useStore()
-const navigate = useNavigate();
+  const checkType = (type) => {
+    setFormType(type);
+  };
 
-  const handleAdminSubmit = (e) => {
-    e.preventDefault()
-
-    try {
-      const addSuccess = addProject(name, technology, description, link)
-      if (addSuccess) {
-        toast.success('Added to project successfully')
-        setName('')
-        setDescription('')
-        setTechnology('')
-        setLink('')
-
-      }
-      else {
-        toast.error('Operation fail')
-      }
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
-
-  const handleLogout = async () => {
-    try {
-      const res = await logout()
-
-      if (res) {
-        navigate('/login')
-        toast.success('Logout successfully')
-      }
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
+  const getId = (id) => {
+    setUpdateId(id);
+  };
 
   return (
     <>
-      <button className='logout' onClick={handleLogout}>Logout</button>
-      <form className='adminForm' onSubmit={handleAdminSubmit}>
-        <h1 className='formHeading'>Upload New Project</h1>
-        <input type="text" className='input' name="name" placeholder='Project Name' value={name} onChange={e => setName(e.target.value)} required />
-        <input type="text" className='input' name='technology' placeholder='Technology Used' value={technology} onChange={e => setTechnology(e.target.value)} required />
-        <input type="text" className='description input' placeholder='Description' value={description} onChange={e => setDescription(e.target.value)} required />
-        <input type="text" name="link" placeholder='Link ' className='Link input' value={link} onChange={e => setLink(e.target.value)} required />
-        <button className='formBtn' type='submit'>
-          {
-            addLoading ? <ClipLoader loading={loading} size={15} color='white' /> : 'Post'
-          }
-        </button>
-      </form>
-    </>
-  )
-}
+      <section className="projects">
+        <div className="projects_page_top">
+          <h1>Admin Panel 😍</h1>
+          <p>Here you can add, edit and delete your personal projects</p>
+          <div className="filters">
+            <span className="tech project_tech">Html</span>
+            <span className="tech project_tech">Css</span>
+            <span className="tech project_tech">JavaScript</span>
+            <span className="tech project_tech">TypeScript</span>
+            <span className="tech project_tech">ReactJs</span>
+            <span className="tech project_tech">NodeJs</span>
+            <span className="tech project_tech">ExpressJs</span>
+            <span className="tech project_tech">MongoDB</span>
+          </div>
+        </div>
+        <div className="dash_container">
+          <div className="dash_left">
+            <Form type={formType} setType={setFormType} id={updateId} />
+          </div>
 
-export default Dashboard
+          <div className="dash_right">
+            {deleteLoading ? (
+              <div className="flex">
+                <ClipLoader />
+              </div>
+            ) : (
+              projects.map((item) => (
+                <DashCard
+                  key={item._id}
+                  project={item}
+                  check={checkType}
+                  getId={getId}
+                />
+              ))
+            )}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default Dashboard;

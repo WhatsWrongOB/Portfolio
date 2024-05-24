@@ -16,7 +16,7 @@ const About = () => {
         </div>
         <div className="about_right">
           <div className="about_content">
-            <h1 className="about_heading">About Me</h1>
+            <h2 className="about_heading">About Me</h2>
             <p className="about_para_one">An experienced Full-Stack Developer with extensive knowledge in Web Development, Mobile Development using HTML, CSS/ Frameworks, JavaScript, MERN Stack</p>
             <p className="about_para_two">I love collaborating to turn visions into pixel-perfect reality. My aim is to strike the perfect balance between aesthetics and functionality, ensuring every project exceeds expectations. When not coding, you might find me exploring nature or diving into a new book. Let's connect and create something extraordinary together </p>
             <h1 className="skill_heading"><span>My Main Tech's</span></h1>

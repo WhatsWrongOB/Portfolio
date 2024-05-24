@@ -1,126 +1,168 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import axios from 'axios'
+import axios from "axios";
 
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
+  const Url = "http://localhost:3000";
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [deleteLoading, setdeleteLoading] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [updateLoading, setupdateLoading] = useState(false);
 
-    const [projects, setProjects] = useState([])
-    const [addLoading, setAddLoading] = useState(false)
-    const [loading, setLoading] = useState(false)
-    const [isAuthenticated, setIsAuthenticated] = useState(false)
-    const Url = 'http://localhost:3000'
-
-    const login = async (email, password) => {
-        try {
-            setLoading(true)
-            const { data } = await axios.post(
-                `${Url}/auth/login`,
-                {
-                    email,
-                    password
-                },
-                {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                }
-            );
-
-            const success = data.success;
-            if (success) {
-                setIsAuthenticated(true)
-            }
-            return success;
-        } catch (error) {
-            console.error('Login error:', error);
-            return false;
-        } finally {
-            setLoading(false)
+  const login = async (email, password) => {
+    try {
+      setLoading(true);
+      const { data } = await axios.post(
+        `${Url}/auth/login`,
+        {
+          email,
+          password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-    };
+      );
 
-    const contact = async (email, message) => {
-        try {
-            setAddLoading(true)
-            const { data } = await axios.post(`${Url}/contact/send`, {
-                email,
-                message
-            },
-                {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                }
-            )
-            const contactSuccess = data.success;
-            return contactSuccess;
-
-        } catch (error) {
-            console.log(error)
-            return false;
-        } finally {
-            setAddLoading(false)
-        }
+      const success = data.success;
+      if (success) {
+        setIsAuthenticated(true);
+      }
+      return success;
+    } catch (error) {
+      console.error("Login error:", error);
+      return false;
+    } finally {
+      setLoading(false);
     }
+  };
 
-    const addProject = async (name, technology, description, link) => {
-        try {
-            const { data } = await axios.post(`${Url}/project/add`, {
-                name,
-                technology,
-                description,
-                link
-            },
-                {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                }
-            )
-            const addSuccess = data.success;
-            return addSuccess;
-
-        } catch (error) {
-            console.log(error)
-            return false;
-
+  const contact = async (email, message) => {
+    try {
+      const { data } = await axios.post(
+        `${Url}/contact/send`,
+        {
+          email,
+          message,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
+      );
+      const contactSuccess = data.success;
+      return contactSuccess;
+    } catch (error) {
+      console.log(error);
+      return false;
     }
+  };
 
-    const getProject = async () => {
-        try {
-            const { data } = await axios.get(`${Url}/project/get`)
-            setProjects(data)
-        } catch (error) {
-            console.log(error.message)
+  const addProject = async (name, technology, description, link) => {
+    try {
+      const { data } = await axios.post(
+        `${Url}/project/add`,
+        {
+          name,
+          technology,
+          description,
+          link,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
+      );
+      const addSuccess = data.success;
+      return addSuccess;
+    } catch (error) {
+      console.log(error);
+      return false;
     }
+  };
 
-    const logout = async () => {
-        try {
-            const { data } = await axios.get(`${Url}/auth/logout`)
-            return data.success;
-        } catch (error) {
-            console.log(error.message)
-            return false;
-        }
+  const getProject = async () => {
+    try {
+      const { data } = await axios.get(`${Url}/project/get`);
+      setProjects(data);
+    } catch (error) {
+      console.log(error.message);
     }
+  };
 
-    useEffect(() => {
-        getProject()
-    }, [])
+  const deleteProject = async (id) => {
+    try {
+      setdeleteLoading(true);
+      const { data } = await axios.delete(`${Url}/project/delete/${id}`);
+      return data.success;
+    } catch (error) {
+      console.log(error.message);
+      return false;
+    } finally {
+      setdeleteLoading(false);
+    }
+  };
 
+  const updateProject = async (id,name, technology, description, link) => {
+    try {
+      setupdateLoading(true);
+      const { data } = await axios.patch(`${Url}/project/update/${id}`, {
+        name,
+        technology,
+        description,
+        link,
+      });
+      return data.success;
+    } catch (error) {
+      console.log(error.message);
+      return false;
+    } finally {
+      setupdateLoading(false);
+    }
+  };
 
-    return (
-        <AppContext.Provider value={{ login, contact, addProject, projects, loading, isAuthenticated, addLoading, logout }}>
-            {children}
-        </AppContext.Provider>
-    )
-}
+  const logout = async () => {
+    try {
+      const { data } = await axios.get(`${Url}/auth/logout`);
+      return data.success;
+    } catch (error) {
+      console.log(error.message);
+      return false;
+    }
+  };
+
+  useEffect(() => {
+    getProject();
+  }, [addProject, login, deleteProject]);
+
+  return (
+    <AppContext.Provider
+      value={{
+        login,
+        logout,
+        isAuthenticated,
+        contact,
+        addProject,
+        deleteProject,
+        projects,
+        loading,
+        deleteLoading,
+        updateLoading,
+        updateProject
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
+};
 
 const useStore = () => {
-    return useContext(AppContext)
-}
+  return useContext(AppContext);
+};
 
-export { AppProvider, useStore }
+export { AppProvider, useStore };

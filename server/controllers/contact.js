@@ -6,17 +6,17 @@ export const contact = async (req, res) => {
 
     const messageSend = await Contact.create({
       email,
-      message
-    })
+      message,
+    });
 
     return res.status(200).json({
       success: true,
-      message: "Message send successfully"
+      message: "Message send successfully",
     });
   } catch (error) {
     return res.status(400).json({
       success: false,
-      message: "Message not delivered"
+      message: "Message not delivered",
     });
   }
 };

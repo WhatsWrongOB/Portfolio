@@ -43,12 +43,12 @@ const Navbar = () => {
   return (
     <nav className={navActive ? 'nav_active' : 'nav'}>
       <h1 className="logo">
-        <span>O</span>baid
+        <span>H</span>ashir
       </h1>
 
       <ul className='menu'>
         <li className="toggleBtn" onClick={toggleTheme}>
-          <Toggle />
+          {/* <Toggle /> */}
         </li>
         <div className={`inner_menu ${responsive ? 'active' : ''}`}>
           <li>
