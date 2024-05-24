@@ -11,10 +11,11 @@ const app = express();
 
 dotenv.config({ path: "./config/config.env" });
 
+const allowedOrigins = ["https://obaidali.netlify.app"];
+
 const corsOptions = {
   origin: (origin, callback) => {
-    const allowedOrigins = ["https://obaidali.netlify.app/"];
-    if (allowedOrigins.includes(origin) || !origin) {
+    if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
@@ -30,14 +31,14 @@ app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json());
 
-app.use("/", (req, res) => {
-  res.send("Server Working");
-});
-
 app.use("/auth", userRouter);
 app.use("/project", projectRouter);
 app.use("/contact", contactRouter);
 app.use(express.static("dist"));
+
+app.use("/", (req, res) => {
+  res.send("Server Working");
+});
 
 const PORT = process.env.PORT || 3000;
 
@@ -45,4 +46,13 @@ connectDatabase().then(() => {
   app.listen(PORT, () => {
     console.log(`Server Running on the Port http://localhost:${PORT}/`);
   });
+});
+
+// Error handling middleware for CORS errors
+app.use((err, req, res, next) => {
+  if (err instanceof Error && err.message.includes("Not allowed by CORS")) {
+    res.status(403).json({ message: "CORS error: Access denied" });
+  } else {
+    next(err);
+  }
 });
