@@ -30,6 +30,10 @@ app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json());
 
+app.use("/", (req, res) => {
+  res.send("Server Working");
+});
+
 app.use("/auth", userRouter);
 app.use("/project", projectRouter);
 app.use("/contact", contactRouter);
