@@ -3,7 +3,7 @@ import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Combine from "./combine"
+import Combine from "./Combine"
 import Login from './components//Login'
 import Dashboard from './components//Dashboard'
 import PrivateRoute from "./components/PrivateRoute";
