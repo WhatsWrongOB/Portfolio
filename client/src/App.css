@@ -21,6 +21,11 @@ p {
   line-height: 30px !important;
 }
 
+li {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1.15rem !important;
+}
+
 ::-webkit-scrollbar {
   width: 9px;
 }
@@ -577,7 +582,7 @@ input:checked + .toggle-slider:before {
 @media screen and (max-width: 500px) {
   .home_content p {
     font-size: 1.1rem;
-      color: rgb(228, 226, 226) !important;
+    color: rgb(228, 226, 226) !important;
   }
 
   .home_heading {
@@ -640,6 +645,7 @@ input:checked + .toggle-slider:before {
   display: flex;
   gap: 20px;
   margin-top: 30px;
+  flex-wrap: wrap;
 }
 
 .logos img {
@@ -916,52 +922,76 @@ input:checked + .toggle-slider:before {
 }
 
 /* ------------FOOTER------------ */
+footer {
+  height: 50vh;
+  margin-top: 150px;
+}
 
-.footer {
+.footer_container {
   display: flex;
   justify-content: space-around;
-  align-items: center;
-  backdrop-filter: blur(6px);
+  margin-bottom: 20px;
 }
 
-.footer img {
-  width: 30px;
+.footer_logo h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-.social_links {
+.line h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.line ul li {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.line ul {
+  padding: 0;
+}
+
+.social_link h3 {
+  margin-bottom: 25px;
+}
+
+.links {
   display: flex;
-  gap: 20px;
+  gap: 15px;
 }
 
-.footer_para {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
+.end {
+  padding: 20px 0px;
+  text-align: center;
 }
 
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.footer_para img {
-  animation: rotate 5s linear infinite;
+.footer_logo {
+  margin-left: 140px;
+  margin-bottom: 30px;
 }
 
 @media screen and (max-width: 800px) {
-  .footer {
-    margin-top: 130px;
+  footer {
+    margin-top: 150px;
     flex-direction: column;
   }
 
-  .footer .logo {
+  footer .logo {
     margin: 0%;
+  }
+
+  .footer_container {
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding-left: 25px;
+  }
+
+  .footer_logo {
+    margin: 0px 0px 25px 20px;
   }
 }
 
