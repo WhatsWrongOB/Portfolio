@@ -43,7 +43,7 @@ const Navbar = () => {
   return (
     <nav className={navActive ? 'nav_active' : 'nav'}>
       <h1 className="logo">
-        <span>H</span>ashir
+        <span>O</span>baid
       </h1>
 
       <ul className='menu'>

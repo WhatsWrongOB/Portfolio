@@ -1,3 +1,6 @@
+* {
+}
+
 body {
   width: 100vw;
   height: 100vh;
@@ -7,9 +10,15 @@ body {
   box-sizing: border-box;
   color: white;
   background-color: #212121;
-  font-family: sans-serif;
   transition: all ease-in-out 0.2s;
   overflow-x: hidden;
+  font-family: "Times New Roman", Times, serif;
+}
+
+p {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1.15rem !important;
+  line-height: 30px !important;
 }
 
 ::-webkit-scrollbar {
@@ -263,6 +272,16 @@ label {
   .post_form {
     width: 90%;
   }
+
+  .submit-button {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .projects_page_top h1 {
+    font-size: 2.2rem;
+  }
 }
 
 /* -------------Loader------------- */
@@ -484,6 +503,7 @@ input:checked + .toggle-slider:before {
   font-size: 1.1rem;
   line-height: 26px;
   font-weight: lighter;
+  color: rgb(228, 226, 226) !important;
 }
 
 .home_btn {
@@ -555,6 +575,11 @@ input:checked + .toggle-slider:before {
 }
 
 @media screen and (max-width: 500px) {
+  .home_content p {
+    font-size: 1.1rem;
+      color: rgb(228, 226, 226) !important;
+  }
+
   .home_heading {
     font-size: 3rem;
   }
@@ -604,6 +629,7 @@ input:checked + .toggle-slider:before {
 .about_para_two {
   font-size: 1.1rem;
   line-height: 25px;
+  color: rgb(224, 219, 219) !important;
 }
 
 .skill_heading {
@@ -780,6 +806,7 @@ input:checked + .toggle-slider:before {
 }
 
 .contact_para {
+  padding: 0px 5px;
   text-align: center;
   font-size: 1.05rem;
 }

@@ -108,7 +108,7 @@ const AppProvider = ({ children }) => {
     }
   };
 
-  const updateProject = async (id,name, technology, description, link) => {
+  const updateProject = async (id, name, technology, description, link) => {
     try {
       setupdateLoading(true);
       const { data } = await axios.patch(`${Url}/project/update/${id}`, {
@@ -153,7 +153,7 @@ const AppProvider = ({ children }) => {
         loading,
         deleteLoading,
         updateLoading,
-        updateProject
+        updateProject,
       }}
     >
       {children}

@@ -6,7 +6,7 @@ import react from '/public/react.svg'
 const Footer = () => {
   return (
     <div className="footer">
-      <h1 className='logo'><span>H</span>ashir</h1>
+      <h1 className='logo'><span>O</span>baid</h1>
       <p className="footer_para">This site was made with
         <img src={react} alt="react" />
         alot of ❤️</p>

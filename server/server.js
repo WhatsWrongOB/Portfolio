@@ -34,7 +34,6 @@ app.use(express.json());
 app.use("/auth", userRouter);
 app.use("/project", projectRouter);
 app.use("/contact", contactRouter);
-app.use(express.static("dist"));
 
 app.use("/", (req, res) => {
   res.send("Server Working");
