@@ -24,7 +24,7 @@ const Footer = () => {
           <h3>Collaborate with me</h3>
           <ul>
             <li>03204872665</li>
-            <li>obiadbro9@gmail.com</li>
+            <li>hashir@gmail.com</li>
           </ul>
         </div>
 
