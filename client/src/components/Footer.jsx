@@ -21,7 +21,7 @@ const Footer = () => {
         </div>
 
         <div className="line">
-          <h3>Contact Us</h3>
+          <h3>Collaborate with me</h3>
           <ul>
             <li>03204872665</li>
             <li>obiadbro9@gmail.com</li>
