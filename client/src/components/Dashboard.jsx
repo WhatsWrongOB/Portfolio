@@ -5,7 +5,7 @@ import DashCard from "./DashCard";
 import ClipLoader from "react-spinners/ClipLoader";
 
 const Dashboard = () => {
-  const { projects, deleteLoading } = useStore();
+  const { projects, deleteLoading, message } = useStore();
   const [formType, setFormType] = useState("create");
   const [updateId, setUpdateId] = useState(null);
 
@@ -60,21 +60,13 @@ const Dashboard = () => {
       <div className="dash_msg">
         <div className="dash_msg_container">
           <h1>Messages</h1>
-          <div className="msg">
-            <h4>From : obaidbro@gmail.com</h4>
-            <h5>Message : checking</h5>
-          </div>
 
-          <div className="msg">
-            <h4>From : obaidbro@gmail.com</h4>
-            <h5>Message : checking</h5>
-          </div>
-
-          <div className="msg">
-            <h4>From : obaidbro@gmail.com</h4>
-            <h5>Message : checking</h5>
-          </div>
-
+          {message.map((item) => (
+            <div className="msg" key={item._id}>
+              <h4>From : {item.email}</h4>
+              <h5>Message : {item.message}</h5>
+            </div>
+          ))}
         </div>
       </div>
     </>
