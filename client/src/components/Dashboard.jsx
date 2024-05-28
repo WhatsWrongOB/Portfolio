@@ -57,6 +57,26 @@ const Dashboard = () => {
           </div>
         </div>
       </section>
+      <div className="dash_msg">
+        <div className="dash_msg_container">
+          <h1>Messages</h1>
+          <div className="msg">
+            <h4>From : obaidbro@gmail.com</h4>
+            <h5>Message : checking</h5>
+          </div>
+
+          <div className="msg">
+            <h4>From : obaidbro@gmail.com</h4>
+            <h5>Message : checking</h5>
+          </div>
+
+          <div className="msg">
+            <h4>From : obaidbro@gmail.com</h4>
+            <h5>Message : checking</h5>
+          </div>
+
+        </div>
+      </div>
     </>
   );
 };

@@ -8,7 +8,7 @@ const AppProvider = ({ children }) => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(false);
   const [deleteLoading, setdeleteLoading] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [updateLoading, setupdateLoading] = useState(false);
 
   const login = async (email, password) => {

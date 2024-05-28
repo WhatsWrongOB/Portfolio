@@ -129,6 +129,43 @@ label {
   display: none;
 }
 
+.dash_msg {
+  background-color: white;
+}
+
+.dash_msg_container {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dash_msg_container h1 {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 2.3rem;
+}
+
+.msg {
+  width: 80%;
+  height: auto;
+  border-bottom: 1px solid rgb(165, 161, 161);
+}
+
+.msg h4 {
+  font-size: 1.4rem;
+  margin: 0px;
+  padding: 30px 0px 0px 10px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.msg h5 {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  padding-left: 10px;
+}
+
 .projects {
   min-height: 100vh;
   max-height: auto;
@@ -449,6 +486,10 @@ input:checked + .toggle-slider:before {
   a {
     margin-bottom: 30px;
   }
+
+  .msg {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -458,6 +499,10 @@ input:checked + .toggle-slider:before {
 
   .inner_menu.active {
     right: 90%;
+  }
+
+  .dash_msg_container h1 {
+    margin-top: 0px;
   }
 }
 
