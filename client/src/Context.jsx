@@ -6,6 +6,7 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
   const Url = "https://backend-portfolio-green.vercel.app";
   const [projects, setProjects] = useState([]);
+  const [message, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [deleteLoading, setdeleteLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(true);
@@ -95,6 +96,15 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  const getMsg = async () => {
+    try {
+      const { data } = await axios.get(`${Url}/contact/get`);
+      setMessages(data.messages);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   const deleteProject = async (id) => {
     try {
       setdeleteLoading(true);
@@ -137,6 +147,10 @@ const AppProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    getMsg();
+  }, [isAuthenticated]);
+
+  useEffect(() => {
     getProject();
   }, [addProject, login, deleteProject]);
 
@@ -154,6 +168,7 @@ const AppProvider = ({ children }) => {
         deleteLoading,
         updateLoading,
         updateProject,
+        message
       }}
     >
       {children}
