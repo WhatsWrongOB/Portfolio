@@ -47,7 +47,7 @@ const Contact = () => {
           </button>
           <button className="phone">
             <img src={phone} alt="phone" />
-            <p>03204872665</p>
+            <p>03200969052</p>
           </button>
         </div>
         <h3 className="contact_heading_two">

@@ -324,6 +324,14 @@ label {
   .projects_page_top h1 {
     font-size: 2.2rem;
   }
+
+  .msg h4 {
+    font-size: 1.2rem;
+  }
+
+  .msg h5 {
+    font-size: 1rem;
+  }
 }
 
 /* -------------Loader------------- */
@@ -488,7 +496,7 @@ input:checked + .toggle-slider:before {
   }
 
   .msg {
-    width: 100%;
+    width: 97%;
   }
 }
 
@@ -502,7 +510,7 @@ input:checked + .toggle-slider:before {
   }
 
   .dash_msg_container h1 {
-    margin-top: 0px;
+    font-size: 2rem;
   }
 }
 
