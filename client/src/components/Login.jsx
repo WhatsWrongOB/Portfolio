@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaUser, FaKey } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useStore } from "../Context";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import ClipLoader from "react-spinners/ClipLoader";
 
 const Login = () => {

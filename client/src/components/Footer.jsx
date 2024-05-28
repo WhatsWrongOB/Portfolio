@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="footer_logo">
         <h1>
           {" "}
-          <span>O</span>baid
+          <span>H</span>ashir
         </h1>
       </div>
       <hr />
@@ -39,7 +39,7 @@ const Footer = () => {
         </div>
       </div>
       <hr />
-      <p className="end">2024 Obaid | All rights reserved</p>
+      <p className="end">2024 Hashir | All rights reserved</p>
     </footer>
   );
 };

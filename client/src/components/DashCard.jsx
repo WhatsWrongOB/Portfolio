@@ -2,8 +2,7 @@ import React from "react";
 import File from "/public/file.svg";
 import { FaBitbucket, FaEdit } from "react-icons/fa";
 import { useStore } from "../Context";
-import { toast } from "react-toastify";
-
+import { toast } from "react-hot-toast";
 
 const DashCard = ({ project, check, getId }) => {
   const { deleteProject } = useStore();
@@ -20,7 +19,7 @@ const DashCard = ({ project, check, getId }) => {
   const handleUpdate = (id) => {
     check("update");
     getId(id);
-    toast.success("Update this project using the form above");
+    toast.success("Update this project using the form ");
   };
 
   return (
