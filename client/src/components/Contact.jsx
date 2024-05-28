@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import phone from "/public/phone.svg";
 import msg from "/public/msg.svg";
 import { useStore } from "../Context";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import ClipLoader from "react-spinners/ClipLoader";
 
 const Contact = () => {

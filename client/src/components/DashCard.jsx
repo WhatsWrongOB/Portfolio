@@ -4,6 +4,7 @@ import { FaBitbucket, FaEdit } from "react-icons/fa";
 import { useStore } from "../Context";
 import { toast } from "react-toastify";
 
+
 const DashCard = ({ project, check, getId }) => {
   const { deleteProject } = useStore();
 

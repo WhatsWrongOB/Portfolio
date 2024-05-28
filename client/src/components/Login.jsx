@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { FaUser, FaKey } from "react-icons/fa";
-import me from "/public/me.jpeg";
 import { Link, useNavigate } from "react-router-dom";
 import { useStore } from "../Context";
 import { toast } from "react-toastify";
@@ -32,7 +31,6 @@ const Login = () => {
     <section className="login">
       <div className="form">
         <div className="login_upper">
-          {/* <img src={me} className='circle' alt="me" /> */}
           <h1>Admin Login</h1>
         </div>
         <div className="login_bottom">
