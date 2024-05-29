@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { Contact } from "../models/contact.js";
 
 export const contact = async (req, res) => {
