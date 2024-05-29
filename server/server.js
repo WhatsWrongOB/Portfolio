@@ -11,7 +11,10 @@ const app = express();
 
 dotenv.config({ path: "./config/config.env" });
 
-const allowedOrigins = ["https://syedhashir-portfolio.netlify.app"];
+const allowedOrigins = [
+  "https://syedhashir-portfolio.netlify.app",
+  " http://localhost:5173",
+];
 
 const corsOptions = {
   origin: (origin, callback) => {

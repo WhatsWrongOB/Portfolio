@@ -37,3 +37,28 @@ export const getContact = async (req, res) => {
     });
   }
 };
+
+export const deleteContact = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({
+        success: false,
+        message: `No contact with id ${id}`,
+      });
+    }
+
+    await Contact.findByIdAndDelete(id);
+
+    return res.status(200).json({
+      success: true,
+      message: "Message deleted successfully",
+    });
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
