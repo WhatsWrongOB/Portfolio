@@ -9,7 +9,7 @@ const AppProvider = ({ children }) => {
   const [message, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [deleteLoading, setdeleteLoading] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [updateLoading, setupdateLoading] = useState(false);
 
   const login = async (email, password) => {
