@@ -151,6 +151,7 @@ label {
   width: 80%;
   height: auto;
   border-bottom: 1px solid rgb(165, 161, 161);
+  position: relative;
 }
 
 .msg h4 {
@@ -164,6 +165,12 @@ label {
   font-size: 1.2rem;
   margin-top: 10px;
   padding-left: 10px;
+}
+
+.msg_delete {
+  position: absolute;
+  right: 30px;
+  top: 50px;
 }
 
 .projects {

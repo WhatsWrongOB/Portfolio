@@ -146,9 +146,20 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  const deleteContact = async (id) => {
+    try {
+      const { data } = await axios.delete(`${Url}/contact/delete/${id}`);
+      return data.success;
+    } catch (error) {
+      console.log(error.message);
+      return false;
+    } finally {
+    }
+  };
+
   useEffect(() => {
     getMsg();
-  }, [isAuthenticated]);
+  }, [isAuthenticated, deleteContact, message]);
 
   useEffect(() => {
     getProject();
@@ -168,7 +179,8 @@ const AppProvider = ({ children }) => {
         deleteLoading,
         updateLoading,
         updateProject,
-        message
+        message,
+        deleteContact,
       }}
     >
       {children}

@@ -3,9 +3,11 @@ import { useStore } from "../Context";
 import Form from "./Form";
 import DashCard from "./DashCard";
 import ClipLoader from "react-spinners/ClipLoader";
+import { FaBitbucket } from "react-icons/fa";
+import { toast } from "react-hot-toast";
 
 const Dashboard = () => {
-  const { projects, deleteLoading, message } = useStore();
+  const { projects, deleteLoading, deleteContact, message } = useStore();
   const [formType, setFormType] = useState("create");
   const [updateId, setUpdateId] = useState(null);
 
@@ -15,6 +17,15 @@ const Dashboard = () => {
 
   const getId = (id) => {
     setUpdateId(id);
+  };
+
+  const handleMsgDel = async (id) => {
+    try {
+      const res = await deleteContact(id);
+      if (res) toast.success("Msg deleted successfully");
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   return (
@@ -63,6 +74,12 @@ const Dashboard = () => {
 
           {message.map((item) => (
             <div className="msg" key={item._id}>
+              <div
+                className="msg_delete"
+                onClick={() => handleMsgDel(item._id)}
+              >
+                <FaBitbucket color="red" />
+              </div>
               <h4>From : {item.email}</h4>
               <h5>Message : {item.message}</h5>
             </div>
