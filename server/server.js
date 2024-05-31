@@ -12,7 +12,7 @@ const app = express();
 dotenv.config({ path: "./config/config.env" });
 
 const allowedOrigins = [
-  "https://syedhashir-portfolio.netlify.app",
+  "https://obaidali.netlify.app",
   "http://localhost:3000",
 ];
 
@@ -37,6 +37,8 @@ app.use(express.json());
 app.use("/auth", userRouter);
 app.use("/project", projectRouter);
 app.use("/contact", contactRouter);
+
+// app.use(express.static("./dist"));
 
 app.use("/", (req, res) => {
   res.send("Server working");

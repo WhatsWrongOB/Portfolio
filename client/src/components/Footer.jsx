@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="footer_logo">
         <h1>
           {" "}
-          <span>H</span>ashir
+          <span>O</span>baid
         </h1>
       </div>
       <hr />
@@ -24,7 +24,7 @@ const Footer = () => {
           <h3>Collaborate with me</h3>
           <ul>
             <li>03204872665</li>
-            <li>hashir@gmail.com</li>
+            <li>obaidbro9@gmail.com</li>
           </ul>
         </div>
 
@@ -39,7 +39,7 @@ const Footer = () => {
         </div>
       </div>
       <hr />
-      <p className="end">2024 Hashir | All rights reserved</p>
+      <p className="end">2024 Obaid | All rights reserved</p>
     </footer>
   );
 };

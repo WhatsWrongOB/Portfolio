@@ -21,7 +21,6 @@ const Navbar = () => {
     };
   }, []);
 
-
   const hamburgerClick = () => {
     setResponsive(!responsive);
   };
@@ -29,13 +28,11 @@ const Navbar = () => {
   return (
     <nav className={navActive ? "nav_active" : "nav"}>
       <h1 className="logo">
-        <span>H</span>ashir
+        <span>O</span>baid
       </h1>
 
       <ul className="menu">
-        <li className="toggleBtn" >
-          {/* <Toggle /> */}
-        </li>
+        <li className="toggleBtn">{/* <Toggle /> */}</li>
         <div className={`inner_menu ${responsive ? "active" : ""}`}>
           <li>
             <Link to="home" smooth={true} duration={500}>

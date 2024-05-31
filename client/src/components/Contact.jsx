@@ -43,11 +43,11 @@ const Contact = () => {
         <div className="contact_btns">
           <button className="emails">
             <img src={msg} alt="email" />
-            <p>hashir@gmail.com</p>
+            <p>obaidbro9@gmail.com</p>
           </button>
           <button className="phone">
             <img src={phone} alt="phone" />
-            <p>03200969052</p>
+            <p>03204872665</p>
           </button>
         </div>
         <h3 className="contact_heading_two">

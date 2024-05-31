@@ -1,6 +1,5 @@
 import React from "react";
-import me from "/public/me.jpeg";
-import cv from "/public/cv.jpg";
+import resume from "/public/resume.pdf";
 import about from "/public/about.svg";
 
 const Home = () => {
@@ -10,7 +9,7 @@ const Home = () => {
         <div className="home_left">
           <div className="home_content">
             <p>Hello 👋, I am</p>
-            <h1 className="home_heading">Syed Hashir</h1>
+            <h1 className="home_heading">Obaid Ali</h1>
             <h3 className="home_heading_two">
               <span>Full Stack Developer</span>
             </h3>
@@ -19,7 +18,7 @@ const Home = () => {
               designing, developing, and implementing applications and solutions
               using a range of technologies and programming languages.
             </p>
-            <a href={cv} target="blank">
+            <a href={resume} target="blank">
               <button className="home_btn">Download Cv</button>
             </a>
           </div>
