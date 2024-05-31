@@ -28,6 +28,10 @@ app.use("/project", projectRouter);
 app.use("/contact", contactRouter);
 app.use(express.static("./dist"));
 
+app.use("/", (req, res) => {
+  res.send("Server working");
+});
+
 const PORT = process.env.PORT || 3000;
 
 connectDatabase().then(() => {
@@ -35,5 +39,3 @@ connectDatabase().then(() => {
     console.log(`Server Running on the Port http://localhost:${PORT}/`);
   });
 });
-
-
