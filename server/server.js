@@ -11,19 +11,8 @@ const app = express();
 
 dotenv.config({ path: "./config/config.env" });
 
-const allowedOrigins = [
-  "https://syedhashir-portfolio.netlify.app",
-  " http://localhost:5173",
-];
-
 const corsOptions = {
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+  origin: "*",
   methods: "GET, POST, PUT, DELETE, PATCH, OPTIONS",
   credentials: true,
   allowedHeaders:
@@ -37,10 +26,7 @@ app.use(express.json());
 app.use("/auth", userRouter);
 app.use("/project", projectRouter);
 app.use("/contact", contactRouter);
-
-app.use("/", (req, res) => {
-  res.send("Server Working");
-});
+app.use(express.static("./dist"));
 
 const PORT = process.env.PORT || 3000;
 
@@ -50,11 +36,4 @@ connectDatabase().then(() => {
   });
 });
 
-// Error handling middleware for CORS errors
-app.use((err, req, res, next) => {
-  if (err instanceof Error && err.message.includes("Not allowed by CORS")) {
-    res.status(403).json({ message: "CORS error: Access denied" });
-  } else {
-    next(err);
-  }
-});
+

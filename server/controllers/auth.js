@@ -14,7 +14,7 @@ export const register = async (req, res) => {
       });
     }
 
-    const userCreated = await User.create({
+    await User.create({
       username,
       email,
       password,
@@ -45,7 +45,9 @@ export const login = async (req, res) => {
       });
     }
 
-    const token = Jwt.sign({ _id: user._id }, process.env.JWT_SECRET_KEY);
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY, {
+      expiresIn: "1h",
+    });
 
     return res
       .status(200)
