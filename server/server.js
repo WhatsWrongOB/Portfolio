@@ -26,7 +26,6 @@ app.use(express.json());
 app.use("/auth", userRouter);
 app.use("/project", projectRouter);
 app.use("/contact", contactRouter);
-app.use(express.static("./dist"));
 
 app.use("/", (req, res) => {
   res.send("Server working");
@@ -38,4 +37,12 @@ connectDatabase().then(() => {
   app.listen(PORT, () => {
     console.log(`Server Running on the Port http://localhost:${PORT}/`);
   });
+});
+
+app.use((err, req, res, next) => {
+  if (err instanceof Error && err.message.includes("Not allowed by CORS")) {
+    res.status(403).json({ message: "CORS error: Access denied" });
+  } else {
+    next(err);
+  }
 });
