@@ -7,12 +7,7 @@ import react from "/public/react.svg";
 import node from "/public/node.svg";
 import ts from "/public/ts.svg";
 import ex from "/public/ex.svg";
-import sass from "/public/sass.svg";
-import git from "/public/git.svg";
-import githubb from "/public/githubb.svg";
-import next from "/public/next.svg";
-import rtk from "/public/rtk.svg";
-import mongo from "/public/mongo.svg";
+
 
 const About = () => {
   return (
@@ -43,17 +38,11 @@ const About = () => {
             <div className="logos">
               <img className="animate" src={html} alt="Html" />
               <img className="animate" src={css} alt="Css" />
-              <img className="animate" src={sass} alt="Scss" />
               <img className="animate" src={js} alt="Javascript" />
               <img className="animate" src={ts} alt="Css" />
               <img className="react animate" src={react} alt="React" />
-              <img className="react animate" src={rtk} alt="RTK" />
-              <img className="animate" src={next} alt="Mext" />
               <img className="animate" src={node} alt="Node" />
-              <img className="animate" src={ex} alt="Express" />
-              <img className="animate" src={mongo} alt="Mongo" />
-              <img className="animate" src={git} alt="Git" />
-              <img className="animate" src={githubb} alt="Github" />
+              <img className="animate" src={ex} alt="express" />
             </div>
           </div>
         </div>
