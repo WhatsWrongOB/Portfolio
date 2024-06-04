@@ -633,6 +633,10 @@ input:checked + .toggle-slider:before {
   .home_btn {
     padding: 18px 40px;
   }
+
+  .home_content {
+    width: 87%;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -723,7 +727,7 @@ input:checked + .toggle-slider:before {
   }
 
   .about_right {
-    width: 80%;
+    width: 86%;
     margin-top: 40px;
   }
 
