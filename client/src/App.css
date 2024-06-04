@@ -809,18 +809,18 @@ input:checked + .toggle-slider:before {
 }
 
 .card_inner {
-  padding-left: 15px;
+  padding-left: 12px;
 }
 
 .upper {
   height: 100px;
   display: flex;
-  gap: 190px;
+  justify-content: space-between;
 }
 
 .github_img {
   width: 8%;
-  margin-top: 30px;
+  padding: 10px 45px 0px 0px;
 }
 
 .github_img img {
@@ -847,9 +847,21 @@ input:checked + .toggle-slider:before {
   transform: scale(1.02);
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 795px) {
   .portfolio_heading {
     font-size: 2rem;
+  }
+
+  .portfolio_card {
+    width: 92%;
+  }
+
+  .portfolio_para {
+    font-size: 1.1rem !important;
+  }
+
+  .github_img img {
+    width: 30px;
   }
 }
 
@@ -1231,11 +1243,11 @@ input:-webkit-autofill {
     text-align: left;
   }
 
-  .forget a{
+  .forget a {
     font-size: 0.9rem;
   }
 
-  .group{
+  .group {
     gap: 20px;
   }
 }
