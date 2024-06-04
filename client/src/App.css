@@ -711,7 +711,7 @@ input:checked + .toggle-slider:before {
 }
 
 .logos img {
-  width: 5%;
+  width: 6%;
 }
 
 @media screen and (max-width: 800px) {
