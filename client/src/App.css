@@ -626,16 +626,16 @@ input:checked + .toggle-slider:before {
     font-size: 3.8rem;
   }
 
+  .home_content {
+    text-align: center;
+  }
+
   .home_para {
     font-size: 1rem;
   }
 
   .home_btn {
     padding: 18px 40px;
-  }
-
-  .home_content {
-    width: 87%;
   }
 }
 
@@ -727,13 +727,23 @@ input:checked + .toggle-slider:before {
   }
 
   .about_right {
-    width: 86%;
+    width: 80%;
     margin-top: 40px;
   }
 
   .about_content {
     display: flex;
     flex-direction: column;
+    align-items: center;
+  }
+
+  .about_para_one,
+  .about_para_two {
+    text-align: center;
+  }
+
+  .about_heading {
+    text-align: center;
   }
 
   .logos {
