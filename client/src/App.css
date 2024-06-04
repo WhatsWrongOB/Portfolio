@@ -1,5 +1,4 @@
-* {
-}
+@import url("https://fonts.googleapis.com/css2?family=Bruno+Ace&display=swap");
 
 body {
   width: 100vw;
@@ -703,15 +702,15 @@ input:checked + .toggle-slider:before {
 }
 
 .logos {
-  width: 85%;
+  width: 80%;
   display: flex;
-  gap: 20px;
+  gap: 25px;
   margin-top: 30px;
   flex-wrap: wrap;
 }
 
 .logos img {
-  width: 6%;
+  width: 8%;
 }
 
 @media screen and (max-width: 800px) {
@@ -755,7 +754,7 @@ input:checked + .toggle-slider:before {
   }
 
   .logos {
-    width: 95%;
+    width: 100%;
   }
 
   .logos img {
@@ -1063,150 +1062,208 @@ footer {
 
 /* --------------LOGIN-------------- */
 
-.login {
+.auth {
+  width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: black;
 }
 
-.form {
-  width: 480px;
-  height: 440px;
-  border: 1px solid #23ce6b;
+.auth_container {
+  width: 490px;
+  height: auto;
+  border-radius: 20px;
   background-color: white;
-  border-radius: 15px;
 }
 
-.login_upper {
-  height: 140px;
+.auth_upper {
   display: flex;
-  gap: 20px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.login_upper h1 {
-  font-size: 2.7rem;
-  margin: 0%;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+.auth_reg_upper {
+  margin: 20px 0px;
 }
 
-.circle {
-  width: 170px;
-  height: 150px;
+.auth_upper div {
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
-  margin-top: 30px;
-}
-
-.login_bottom {
   display: flex;
   justify-content: center;
-}
-
-.login_form {
-  margin-top: 20px;
-}
-
-.user_email,
-.user_pass {
-  display: flex;
-  gap: 20px;
   align-items: center;
+  margin-top: 20px;
+  background-color: grey;
+}
+
+.auth_upper h1 {
+  color: black;
+  font-family: "Bruno Ace", sans-serif;
+  font-weight: 500;
+}
+
+.auth_form {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  height: 50px;
-  width: 380px;
-  margin-bottom: 20px;
+  align-items: center;
+  gap: 10px;
+}
+
+.group {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
   border-radius: 30px;
-  padding: 0px 20px;
-  border: 1px solid black;
-  background-color: transparent;
+  padding: 0px 15px;
+  background-color: #e7e7e7;
 }
 
-.user_email input,
-.user_pass input {
-  font-size: 1rem;
-  width: 90%;
-  border-radius: 30px;
-  border: none;
-  outline: none;
-  margin-bottom: 10px;
-  background-color: transparent;
-}
-
-.login_btn {
-  font-size: 1.1rem;
-  padding: 17px 20px;
-  width: 100%;
-  border-radius: 30px;
-  border: none;
-  color: white;
-  background-color: #23ce6b;
-  cursor: pointer;
-  transition: all ease-in-out 0.2s;
-}
-
-.login_btn:hover {
-  background-color: #157c40;
-}
-
-.link_home {
+.group input {
+  width: 88%;
+  padding: 18px 0px;
   text-align: center;
-  font-size: 1rem;
+  border-radius: 25px;
+  outline: none;
+  border: none;
+  font-size: 1.16rem;
+  background-color: #e7e7e7;
+  margin: 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #e7e7e7 inset;
+}
+
+.group:focus-within {
+  outline: 2px solid #333433;
+  box-shadow: 0 0 5px #333433;
+}
+
+.auth_form button {
+  width: 88.3%;
+  border-radius: 30px;
+  padding: 17px 0px;
+  font-size: 1.16rem;
+  color: white;
+  background-color: #57b846;
+  border: none;
+  font-size: 1.16rem;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.auth_form button:hover {
+  background-color: #333433;
+}
+
+.auth_form button:focus {
+  transform: scale(0.97);
+}
+
+.forget {
+  color: rgb(102, 98, 98);
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.forget a {
+  color: red;
+  font-weight: 550;
+  transition: all ease-in-out 0.1s;
+}
+
+.forget a:focus {
+  color: green;
+}
+
+.or {
+  font-size: 1.05rem;
+  font-weight: 550;
+}
+
+.eye {
+  padding-top: 5px;
+  margin-right: 10px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 500px) {
-  .form {
+  .auth_container {
     width: 400px;
   }
 
-  .user_email,
-  .user_pass {
-    width: 300px;
+  .auth_upper h1 {
+    font-size: 1.8rem;
   }
 
-  .login_btn {
-    width: 340px;
+  .auth_form input .forget {
+    font-size: 1.05rem;
   }
 
-  .login_form {
-    margin-top: 10px;
+  .forget a {
+    font-size: 1rem;
   }
 
-  .login_upper {
-    height: 130px;
-  }
-
-  .login_upper h1 {
-    font-size: 2rem;
-  }
-
-  .circle {
-    margin: 0;
-    width: 130px;
-    height: 130px;
-  }
-
-  .portfolio_card {
-    width: 330px;
+  .auth_upper div {
+    width: 120px;
+    height: 120px;
   }
 }
 
-@media screen and (max-width: 400px) {
-  .form {
+@media screen and (max-width: 420px) {
+  .auth_container {
     width: 350px;
-    height: 435px;
   }
 
-  .user_email,
-  .user_pass {
-    width: 280px;
+  .auth_upper h1 {
+    font-size: 1.5rem;
   }
 
-  .login_btn {
+  .auth_form input {
+    font-size: 1.1rem;
+    text-align: left;
+  }
+
+  .forget a{
+    font-size: 0.9rem;
+  }
+
+  .group{
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .auth_upper div {
+    width: 100px;
+    height: 100px;
+  }
+
+  .auth_upper div img {
+    width: 30px;
+  }
+
+  .auth_container {
     width: 320px;
+  }
+
+  .auth_upper h1 {
+    font-size: 1.5rem;
+  }
+
+  .auth_upper h1 {
+    font-size: 1.4rem;
+  }
+
+  .auth_form button {
+    font-size: 1.05rem;
   }
 }
 
