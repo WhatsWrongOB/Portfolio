@@ -622,10 +622,6 @@ input:checked + .toggle-slider:before {
     display: none;
   }
 
-  .home_content {
-    text-align: center;
-  }
-
   .home_heading {
     font-size: 3.8rem;
   }
@@ -728,18 +724,16 @@ input:checked + .toggle-slider:before {
 
   .about_right {
     width: 80%;
-    text-align: center;
     margin-top: 40px;
   }
 
   .about_content {
     display: flex;
     flex-direction: column;
-    align-items: center;
   }
 
   .logos {
-    justify-content: center;
+    justify-content: space-evenly;
   }
 }
 

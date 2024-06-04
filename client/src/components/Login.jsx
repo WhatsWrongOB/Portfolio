@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
-import { FaUser, FaKey, FaUserAstronaut } from "react-icons/fa";
+import {  FaKey, FaUserAstronaut } from "react-icons/fa";
 import user from "/public/user.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
