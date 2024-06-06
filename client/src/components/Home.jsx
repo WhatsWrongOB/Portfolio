@@ -8,7 +8,7 @@ const Home = () => {
       <div className="home_container">
         <div className="home_left">
           <div className="home_content">
-            <p>Hello 👋, I am</p>
+            <p className="hello_para">Hello 👋, I am</p>
             <h1 className="home_heading">Obaid Ali</h1>
             <h3 className="home_heading_two">
               <span>Full Stack Developer</span>
@@ -18,8 +18,10 @@ const Home = () => {
               designing, developing, and implementing applications and solutions
               using a range of technologies and programming languages.
             </p>
-            <a href={resume} target="blank">
-              <button className="home_btn">Download Cv</button>
+            <a className="btn_a" href={resume} target="blank">
+              <button class="btn-79">
+                <span>Download Cv</span>
+              </button>
             </a>
           </div>
         </div>

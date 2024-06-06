@@ -354,7 +354,7 @@ label {
 
 nav {
   width: 100%;
-  height: 75px;
+  height: 80px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -553,15 +553,21 @@ input:checked + .toggle-slider:before {
   width: 83%;
 }
 
+.hello_para{
+  font-size: 100px;
+}
+
 .home_heading {
-  font-size: 4.5rem;
-  font-weight: 600;
+  font-size: 4rem;
   line-height: 60px;
   margin: 6px 0px;
+  font-family: bruno ace;
 }
 
 .home_heading_two {
-  font-size: 1.39rem;
+  font-size: 1.7rem;
+  line-height: 20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .home_para {
@@ -569,25 +575,6 @@ input:checked + .toggle-slider:before {
   line-height: 26px;
   font-weight: lighter;
   color: rgb(228, 226, 226) !important;
-}
-
-.home_btn {
-  padding: 18px 55px;
-  color: white;
-  font-size: 1.05rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  line-height: 10px;
-  border-radius: 20px;
-  border: none;
-  margin-top: 10px;
-  background-color: #23ce6b;
-  cursor: pointer;
-  transition: all ease-in-out 0.2s;
-}
-
-.home_btn:hover {
-  background-color: #157c40;
 }
 
 .home_right {
@@ -602,6 +589,7 @@ input:checked + .toggle-slider:before {
   border-radius: 50%;
   margin-left: 100px;
 }
+
 
 @media screen and (max-width: 800px) {
   #home {
@@ -639,7 +627,7 @@ input:checked + .toggle-slider:before {
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .home_content p {
     font-size: 1.1rem;
     color: rgb(228, 226, 226) !important;
@@ -649,8 +637,18 @@ input:checked + .toggle-slider:before {
     font-size: 3rem;
   }
 
+  .home_heading_two{
+    font-size: 1.5rem;
+  }
+
   .home_btn {
     font-size: 1rem;
+  }
+
+  .btn_a{
+    display:flex;
+    justify-content:center;
+    align-items:center;
   }
 }
 
@@ -710,7 +708,7 @@ input:checked + .toggle-slider:before {
 }
 
 .logos img {
-  width: 8%;
+  width: 7%;
 }
 
 @media screen and (max-width: 800px) {
@@ -1352,4 +1350,89 @@ input {
   .formBtn {
     width: 360px;
   }
+}
+
+/* ______________-Button________________ */
+
+.btn-79,
+.btn-79 *,
+.btn-79 :after,
+.btn-79 :before,
+.btn-79:after,
+.btn-79:before {
+  border: 0 solid;
+  box-sizing: border-box;
+}
+
+.btn-79 {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: button;
+  background-color: #000;
+  background-image: none;
+  color: #fff;
+  cursor: pointer;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 100%;
+  font-weight: 900;
+  line-height: 1.5;
+  margin: 0;
+  -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+  padding: 0;
+}
+
+.btn-79:disabled {
+  cursor: default;
+}
+
+.btn-79:-moz-focusring {
+  outline: auto;
+}
+
+.btn-79 svg {
+  display: block;
+  vertical-align: middle;
+}
+
+.btn-79 [hidden] {
+  display: none;
+}
+
+.btn-79 {
+  --height: 80px;
+  background: none;
+  border-radius: 999px;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  height: var(--height);
+  -webkit-mask-image: none;
+  padding: 0 3rem;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.btn-79 span {
+  font-weight: 900;
+  mix-blend-mode: difference;
+}
+
+.btn-79:before {
+  background: #fff;
+  border-radius: 20px;
+  content: "";
+  height: calc(var(--height) / 1.7);
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: 0.2s;
+  width: calc(var(--height) / 1.7);
+}
+
+.btn-79:hover:before {
+  left: 0;
+  width: 100%;
 }
