@@ -3,7 +3,6 @@ import Hamburger from "hamburger-react";
 import { Link } from "react-scroll";
 import { Link as RouterLink } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
-import Toggle from "./Toggle";
 
 const Navbar = () => {
   const [navActive, setNavActive] = useState(false);
@@ -28,11 +27,10 @@ const Navbar = () => {
   return (
     <nav className={navActive ? "nav_active" : "nav"}>
       <h1 className="logo">
-        <span>O</span>baid
+        <span>O</span>B
       </h1>
 
       <ul className="menu">
-        <li className="toggleBtn">{/* <Toggle /> */}</li>
         <div className={`inner_menu ${responsive ? "active" : ""}`}>
           <li>
             <Link to="home" smooth={true} duration={500}>
