@@ -31,10 +31,10 @@ const Footer = () => {
         <div className="line">
           <h3>Social</h3>
           <div className="links">
-            <FaFacebook size={23} />
-            <FaInstagram size={23} />
-            <FaTwitter size={23} />
-            <FaLinkedin size={23} />
+            <FaFacebook size={20} />
+            <FaInstagram size={20} />
+            <FaTwitter size={20} />
+            <FaLinkedin size={20} />
           </div>
         </div>
       </div>

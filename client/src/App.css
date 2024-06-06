@@ -469,10 +469,6 @@ input:checked + .toggle-slider:before {
     gap: 30px;
   }
 
-  .logo {
-    font-size: 2rem;
-  }
-
   a {
     font-size: 0.9rem;
   }
@@ -498,10 +494,6 @@ input:checked + .toggle-slider:before {
     left: 0%;
   }
 
-  a {
-    margin-bottom: 30px;
-  }
-
   .msg {
     width: 97%;
   }
@@ -519,6 +511,8 @@ input:checked + .toggle-slider:before {
   .dash_msg_container h1 {
     font-size: 2rem;
   }
+
+
 }
 
 @media screen and (max-width: 400px) {
@@ -553,7 +547,7 @@ input:checked + .toggle-slider:before {
   width: 83%;
 }
 
-.hello_para{
+.hello_para {
   font-size: 100px;
 }
 
@@ -567,7 +561,7 @@ input:checked + .toggle-slider:before {
 .home_heading_two {
   font-size: 1.7rem;
   line-height: 20px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .home_para {
@@ -589,7 +583,6 @@ input:checked + .toggle-slider:before {
   border-radius: 50%;
   margin-left: 100px;
 }
-
 
 @media screen and (max-width: 800px) {
   #home {
@@ -628,9 +621,13 @@ input:checked + .toggle-slider:before {
 }
 
 @media screen and (max-width: 600px) {
-
-  .logo{
+  .logo {
     font-size: 1.7rem;
+  }
+
+  .home_container{
+   
+      border-top: 1px solid gainsboro;
   }
 
   .home_content p {
@@ -642,7 +639,7 @@ input:checked + .toggle-slider:before {
     font-size: 3rem;
   }
 
-  .home_heading_two{
+  .home_heading_two {
     font-size: 1.5rem;
   }
 
@@ -650,10 +647,10 @@ input:checked + .toggle-slider:before {
     font-size: 1rem;
   }
 
-  .btn_a{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+  .btn_a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -955,6 +952,8 @@ input:checked + .toggle-slider:before {
   color: white;
   background-color: transparent;
   border: 1px solid #23ce6b;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1.05rem;
 }
 
 .cemail {
@@ -970,7 +969,6 @@ input:checked + .toggle-slider:before {
 .submit {
   padding: 14px 15px;
   color: white;
-  font-size: 0.9rem;
   border: none;
   border-radius: 17px;
   background-color: #23ce6b;
@@ -1026,7 +1024,6 @@ footer {
 .footer_logo h1 {
   margin: 0;
   font-size: 2.2rem;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .line h3 {
@@ -1035,7 +1032,7 @@ footer {
 }
 
 .line ul li {
-  font-size: 1.1rem;
+  font-size: 1rem;
   margin-bottom: 10px;
   cursor: pointer;
 }
@@ -1347,6 +1344,10 @@ input {
 
 .logout:hover {
   background-color: #157c40;
+}
+
+.line ul li {
+  color: rgb(228, 224, 224);
 }
 
 @media screen and (max-width: 500px) {
