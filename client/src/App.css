@@ -603,7 +603,7 @@ input:checked + .toggle-slider:before {
   .home_left {
     width: 100%;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 70px;
   }
 
   .home_right {
@@ -628,6 +628,11 @@ input:checked + .toggle-slider:before {
 }
 
 @media screen and (max-width: 600px) {
+
+  .logo{
+    font-size: 1.7rem;
+  }
+
   .home_content p {
     font-size: 1.1rem;
     color: rgb(228, 226, 226) !important;
