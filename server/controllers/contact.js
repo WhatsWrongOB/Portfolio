@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import { Contact } from "../models/contact.js";
-import { myCache } from "../server.js";
+import NodeCache from "node-cache";
+
+const myCache = new NodeCache();
 
 export const getContact = async (req, res) => {
   try {

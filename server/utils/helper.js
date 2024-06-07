@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
-import { myCache } from "../server.js";
+import NodeCache from "node-cache";
 
+const myCache = new NodeCache();
 
 // Helper function to validate ObjectId
 export const isValidObjectId = (id) => mongoose.Types.ObjectId.isValid(id);

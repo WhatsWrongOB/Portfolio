@@ -2,7 +2,6 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import NodeCache from "node-cache";
 import { connectDatabase } from "./config/database.js";
 import { userRouter } from "./routes/auth.js";
 import { projectRouter } from "./routes/project.js";
@@ -10,7 +9,6 @@ import { contactRouter } from "./routes/contact.js";
 
 dotenv.config({ path: "./config/config.env" });
 
-export const myCache = new NodeCache();
 const app = express();
 
 // CORS configuration
