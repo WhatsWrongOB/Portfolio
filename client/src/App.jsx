@@ -6,6 +6,7 @@ import Combine from "./Combine";
 import Login from "./components//Login";
 import Dashboard from "./components//Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
+import 'animate.css';
 
 function App() {
   return (

@@ -9,7 +9,7 @@ const Home = () => {
         <div className="home_left">
           <div className="home_content">
             <p className="hello_para">Hello 👋, I am</p>
-            <h1 className="home_heading">Obaid Ali</h1>
+            <h1 className="home_heading animate__animated animate__bounce">Obaid Ali</h1>
             <h3 className="home_heading_two">
               <span>Full Stack Developer</span>
             </h3>

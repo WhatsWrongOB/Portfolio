@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
-import {  FaKey, FaUserAstronaut } from "react-icons/fa";
+import { FaKey, FaUserAstronaut } from "react-icons/fa";
 import user from "/public/user.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
@@ -35,8 +35,8 @@ const Login = () => {
 
     try {
       const res = await login(email, password);
-      if (res) {
-        toast.success("Login Successful");
+      if (res.success) {
+        toast.success(res.message);
         navigate("/dashboard");
       }
     } catch (error) {
@@ -47,52 +47,52 @@ const Login = () => {
   return (
     <section className="auth">
       <div className="auth_container">
-      <div className="auth_upper">
-        <div>
-          <img src={user} alt="user" />
+        <div className="auth_upper">
+          <div>
+            <img src={user} alt="user" />
+          </div>
+          <h1>Admin Login</h1>
         </div>
-        <h1>Admin Login</h1>
+        <form className="auth_form" onSubmit={handleSubmit}>
+          <div className="group">
+            <FaUserAstronaut size={17} color="black" />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="group">
+            <FaKey size={17} color="black" />
+            <input
+              type={active ? "text" : "password"}
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+            <span className="eye" onClick={handleShowPass}>
+              {active ? <FaEyeSlash color="black" /> : <FaEye color="black" />}
+            </span>
+          </div>
+
+          <button type="submit">
+            {loading ? (
+              <ClipLoader loading={loading} size={17} color="white" />
+            ) : (
+              "Login"
+            )}
+          </button>
+        </form>
+        <p className="forget">
+          Back to home ? <Link to="/">click here</Link>
+        </p>
       </div>
-      <form className="auth_form" onSubmit={handleSubmit}>
-        <div className="group">
-          <FaUserAstronaut size={17} color="black"/>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="group">
-          <FaKey size={17} color="black"/>
-          <input
-            type={active ? "text" : "password"}
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-          <span className="eye" onClick={handleShowPass}>
-            {active ? <FaEyeSlash color="black"/> : <FaEye color="black"/>}
-          </span>
-        </div>
-
-        <button type="submit">
-          {loading ? (
-            <ClipLoader loading={loading} size={17} color="white" />
-          ) : (
-            "Login"
-          )}
-        </button>
-      </form>
-      <p className="forget">
-        Back to home ? <Link to="/">click here</Link>
-      </p>
-    </div>
     </section>
   );
 };

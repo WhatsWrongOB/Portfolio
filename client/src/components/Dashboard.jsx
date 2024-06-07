@@ -22,7 +22,7 @@ const Dashboard = () => {
   const handleMsgDel = async (id) => {
     try {
       const res = await deleteContact(id);
-      if (res) toast.success("Msg deleted successfully");
+      if (res.success) toast.success(res.message);
     } catch (error) {
       toast.error(error.message);
     }

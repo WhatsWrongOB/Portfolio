@@ -10,7 +10,7 @@ const DashCard = ({ project, check, getId }) => {
   const handleDelete = async (id) => {
     try {
       const res = await deleteProject(id);
-      if (res) toast.success("Project Deleted Successfully");
+      if (res.success) toast.success(res.message);
     } catch (error) {
       toast.error(error.message);
     }

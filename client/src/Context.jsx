@@ -28,11 +28,10 @@ const AppProvider = ({ children }) => {
         }
       );
 
-      const success = data.success;
-      if (success) {
+      if (data.success) {
         setIsAuthenticated(true);
       }
-      return success;
+      return data;
     } catch (error) {
       console.error("Login error:", error);
       return false;
@@ -55,8 +54,7 @@ const AppProvider = ({ children }) => {
           },
         }
       );
-      const contactSuccess = data.success;
-      return contactSuccess;
+      return data;
     } catch (error) {
       console.log(error);
       return false;
@@ -79,8 +77,7 @@ const AppProvider = ({ children }) => {
           },
         }
       );
-      const addSuccess = data.success;
-      return addSuccess;
+      return data;
     } catch (error) {
       console.log(error);
       return false;
@@ -109,7 +106,7 @@ const AppProvider = ({ children }) => {
     try {
       setdeleteLoading(true);
       const { data } = await axios.delete(`${Url}/project/delete/${id}`);
-      return data.success;
+      return data;
     } catch (error) {
       console.log(error.message);
       return false;
@@ -127,7 +124,7 @@ const AppProvider = ({ children }) => {
         description,
         link,
       });
-      return data.success;
+      return data;
     } catch (error) {
       console.log(error.message);
       return false;
@@ -139,7 +136,7 @@ const AppProvider = ({ children }) => {
   const logout = async () => {
     try {
       const { data } = await axios.get(`${Url}/auth/logout`);
-      return data.success;
+      return data;
     } catch (error) {
       console.log(error.message);
       return false;
@@ -149,7 +146,7 @@ const AppProvider = ({ children }) => {
   const deleteContact = async (id) => {
     try {
       const { data } = await axios.delete(`${Url}/contact/delete/${id}`);
-      return data.success;
+      return data;
     } catch (error) {
       console.log(error.message);
       return false;

@@ -15,16 +15,14 @@ const Contact = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const contactSuccess = await contact(email, message);
-      if (contactSuccess) {
-        toast.success("Message Sent Successfully");
+      const data = await contact(email, message);
+      if (data.success) {
+        toast.success(data.message);
         setEmail("");
         setMessage("");
-      } else {
-        toast.error("Message not Sent");
       }
     } catch (error) {
-      console.log(error);
+      toast.error(error);
     } finally {
       setLoading(false);
     }

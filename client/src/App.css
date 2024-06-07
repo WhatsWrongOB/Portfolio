@@ -392,13 +392,17 @@ nav {
   gap: 40px;
 }
 
-a {
+.inner_menu a {
   font-size: 0.95rem;
   font-weight: 550;
   cursor: pointer;
   text-decoration: none;
   text-transform: uppercase;
   transition: all ease-in-out 0.2s;
+}
+
+.inner_menu a:hover {
+  color: gainsboro;
 }
 
 .user_icon {
@@ -545,7 +549,7 @@ a {
   .home_left {
     width: 100%;
     justify-content: center;
-    margin-top: 60px;
+    margin-top: 65px;
   }
 
   .home_right {
@@ -620,7 +624,7 @@ a {
 }
 
 .about_left img {
-  width: 75%;
+  width: 74%;
   margin-top: 20px;
 }
 
@@ -642,6 +646,7 @@ a {
 
 .skill_heading {
   margin-top: 30px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .logos {

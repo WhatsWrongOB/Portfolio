@@ -8,7 +8,9 @@ const Portfolio = () => {
 
   return (
     <section id="portfolio">
-      <h2 className="portfolio_heading">My Portfolio</h2>
+      <h2 className="portfolio_heading">
+        My Portfolio
+      </h2>
       <div className="portfolio_container">
         {projects.map((project) => (
           <PortfolioCard key={project.id} project={project} />

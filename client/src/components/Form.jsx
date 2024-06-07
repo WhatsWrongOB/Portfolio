@@ -29,7 +29,7 @@ export default function Form({ type, setType, id }) {
 
       if (type === "create") {
         const res = await addProject(name, technology, description, link);
-        if (res) toast.success("Added to preject Succcessfully");
+        if (res.success) toast.success(res.message);
       }
       if (type === "update") {
         const res = await updateProject(
@@ -39,14 +39,13 @@ export default function Form({ type, setType, id }) {
           description,
           link
         );
-        if (res) {
+        if (res.success) {
           setType("create");
-          toast.success("Project Updated Succcessfully");
+          toast.success(res.message);
         }
       }
     } catch (error) {
       toast.error(error.message);
-      console.log(error);
     } finally {
       setLoading(false);
     }
