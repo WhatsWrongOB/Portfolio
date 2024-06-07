@@ -49,6 +49,10 @@ button {
   cursor: pointer;
 }
 
+a {
+  text-decoration: none;
+}
+
 .flex {
   display: flex;
   justify-content: center;
@@ -646,7 +650,7 @@ nav {
 
 .skill_heading {
   margin-top: 30px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .logos {
@@ -977,7 +981,7 @@ footer {
 }
 
 .line h3 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin-bottom: 20px;
 }
 
@@ -1029,6 +1033,14 @@ footer {
 
   .footer_logo {
     margin: 0px 0px 25px 20px;
+  }
+
+  .line h3 {
+    font-size: 1.1rem;
+  }
+
+  .line ul li {
+    font-size: 0.95rem;
   }
 }
 
