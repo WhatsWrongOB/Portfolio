@@ -1,8 +1,7 @@
-import NodeCache from "node-cache";
 import { Project } from "../models/project.js";
+import { myCache } from "../server.js";
 import { invalidateProjectCache, isValidObjectId } from "../utils/helper.js";
 
-const myCache = new NodeCache();
 
 export const getProject = async (req, res) => {
   try {

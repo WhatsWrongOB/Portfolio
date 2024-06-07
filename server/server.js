@@ -9,6 +9,7 @@ import { contactRouter } from "./routes/contact.js";
 
 dotenv.config({ path: "./config/config.env" });
 
+export const myCache = new NodeCache();
 const app = express();
 
 // CORS configuration
