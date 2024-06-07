@@ -6,11 +6,10 @@ import { connectDatabase } from "./config/database.js";
 import { userRouter } from "./routes/auth.js";
 import { projectRouter } from "./routes/project.js";
 import { contactRouter } from "./routes/contact.js";
-import NodeCache from "node-cache";
+
 
 dotenv.config({ path: "./config/config.env" });
 
-export const myCache = new NodeCache();
 const app = express();
 
 // CORS configuration

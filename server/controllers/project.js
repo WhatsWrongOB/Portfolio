@@ -1,7 +1,9 @@
 import { Project } from "../models/project.js";
-import { myCache } from "../server.js";
-import { invalidateProjectCache, isValidObjectId } from "../utils/helper.js";
-
+import {
+  invalidateProjectCache,
+  isValidObjectId,
+  myCache,
+} from "../utils/helper.js";
 
 export const getProject = async (req, res) => {
   try {

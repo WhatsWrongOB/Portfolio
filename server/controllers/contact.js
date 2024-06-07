@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { Contact } from "../models/contact.js";
-import { myCache } from "../server.js";
+import { myCache } from "../utils/helper.js";
 
 
 export const getContact = async (req, res) => {
