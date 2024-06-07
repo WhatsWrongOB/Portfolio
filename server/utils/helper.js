@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
-import { myCache } from "../server";
-
+import { myCache } from "../server.js";
 
 
 // Helper function to validate ObjectId
