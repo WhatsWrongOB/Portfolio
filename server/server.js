@@ -2,11 +2,14 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import NodeCache from "node-cache";
 import { connectDatabase } from "./config/database.js";
 import { userRouter } from "./routes/auth.js";
 import { projectRouter } from "./routes/project.js";
 import { contactRouter } from "./routes/contact.js";
 
+
+export const myCache = new NodeCache();
 const app = express();
 
 dotenv.config({ path: "./config/config.env" });
@@ -24,8 +27,6 @@ app.use(express.json());
 app.use("/auth", userRouter);
 app.use("/project", projectRouter);
 app.use("/contact", contactRouter);
-
-// app.use(express.static("./dist"));
 
 app.use("/", (req, res) => {
   res.send("Server working");

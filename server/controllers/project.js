@@ -1,9 +1,18 @@
-import mongoose from "mongoose";
 import { Project } from "../models/project.js";
+import { myCache } from "../server.js";
+import { invalidateProjectCache, isValidObjectId } from "../utils/helper.js";
 
 export const getProject = async (req, res) => {
   try {
-    const projects = await Project.find();
+    let projects;
+
+    if (myCache.has("projects")) {
+      projects = JSON.parse(myCache.get("projects"));
+    } else {
+      projects = await Project.find();
+      myCache.set("projects", JSON.stringify(projects));
+    }
+
     res.status(200).json(projects);
   } catch (error) {
     return res.status(400).json({
@@ -17,16 +26,20 @@ export const addProject = async (req, res) => {
   try {
     const { name, description, technology, link } = req.body;
 
-    const project = Project.create({
-      name,
-      description,
-      technology,
-      link,
-    });
+    if (!name || !description || !technology || !link) {
+      return res.status(400).json({
+        success: false,
+        message: "All fields are required",
+      });
+    }
+
+    await Project.create({ name, description, technology, link });
+
+    invalidateProjectCache();
 
     return res.status(201).json({
       success: true,
-      message: "Added to project successful",
+      message: "Project added successfully",
     });
   } catch (error) {
     return res.status(400).json({
@@ -40,14 +53,16 @@ export const deleteProject = async (req, res) => {
   try {
     const { id } = req.params;
 
-    if (!mongoose.Types.ObjectId.isValid(id)) {
+    if (!isValidObjectId(id)) {
       return res.status(400).json({
         success: false,
-        message: `No post with id ${id}`,
+        message: `No project with id ${id}`,
       });
     }
 
     await Project.findByIdAndDelete(id);
+
+    invalidateProjectCache();
 
     return res.status(200).json({
       success: true,
@@ -66,18 +81,34 @@ export const updateProject = async (req, res) => {
     const { id } = req.params;
     const { name, description, technology, link } = req.body;
 
-    if (!mongoose.Types.ObjectId.isValid(id)) {
+    if (!isValidObjectId(id)) {
       return res.status(400).json({
         success: false,
-        message: `No post with id ${id}`,
+        message: `No project with id ${id}`,
       });
     }
 
-    await Project.findByIdAndUpdate(
+    if (!name || !description || !technology || !link) {
+      return res.status(400).json({
+        success: false,
+        message: "All fields are required",
+      });
+    }
+
+    const updatedProject = await Project.findByIdAndUpdate(
       id,
       { name, description, technology, link },
       { new: true }
     );
+
+    if (!updatedProject) {
+      return res.status(404).json({
+        success: false,
+        message: "Project not found",
+      });
+    }
+
+    invalidateProjectCache();
 
     return res.status(200).json({
       success: true,
