@@ -6,7 +6,6 @@ import ClipLoader from "react-spinners/ClipLoader"; // Spinner component for loa
 import { useCreateMsgMutation } from "../redux/api"; // Hook for creating messages
 
 const Contact = () => {
-
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
@@ -14,15 +13,20 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
-      const res = await createMsg({ email, message }).unwrap();
+      const contactMsg = {
+        email,
+        message,
+      };
+
+      const res = await createMsg(contactMsg).unwrap();
 
       if (res.success) {
         toast.success(res.message);
         setEmail("");
         setMessage("");
-      } 
+      }
     } catch (error) {
       toast.error(error?.data.message);
     }
@@ -48,7 +52,9 @@ const Contact = () => {
             <p>03204872665</p>
           </button>
         </div>
-        <h3 className="contact_heading_two">Get in touch using the form below</h3>
+        <h3 className="contact_heading_two">
+          Get in touch using the form below
+        </h3>
         <form className="contact_form" onSubmit={handleSubmit}>
           <input
             className="cemail"

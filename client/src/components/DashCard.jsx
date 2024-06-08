@@ -1,23 +1,20 @@
 import React from "react";
 import File from "/public/file.svg";
 import { FaBitbucket, FaEdit } from "react-icons/fa";
-import { useStore } from "../Context";
 import { toast } from "react-hot-toast";
+import { useDeleteMsgMutation } from "../redux/api";
 
 const DashCard = ({ project, check, getId }) => {
-
-  const [loading, setloading] = useState(false)
+  const [deleteMsg, { isLoading }] = useDeleteMsgMutation();
 
   const handleDelete = async (id) => {
     try {
-      setloading(true);
-      const { data } = await axios.delete(`${Url}/project/delete/${id}`);
-      return data;
+      const response = await deleteMsg(id);
+      if (response.data.success) {
+        toast.success(response.data.message);
+      }
     } catch (error) {
-      toast.error(error.response.data.message);
-      return false;
-    } finally {
-      setloading(false);
+      toast.error(error?.data.message);
     }
   };
 

@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
-import { useStore } from "../Context";
 import ClipLoader from "react-spinners/ClipLoader";
+import {
+  useCreateProjectMutation,
+  useUpdateProjectMutation,
+} from "../redux/api";
 
 export default function Form({ type, setType, id }) {
-  const { addProject, updateProject } = useStore();
   const [formData, setFormData] = useState({
     name: "",
     description: "",
     technology: "",
     link: "",
   });
-  const [loading, setLoading] = useState(false);
+
+  const [createProject, { isLoading: createLoading }] =
+    useCreateProjectMutation();
+  const [updateProject, { isLoading: updateLoading }] =
+    useUpdateProjectMutation();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,31 +31,34 @@ export default function Form({ type, setType, id }) {
     e.preventDefault();
     const { name, description, technology, link } = formData;
     try {
-      setLoading(true);
-
       if (type === "create") {
-        const res = await addProject(name, technology, description, link);
-        if (res?.success) toast.success(res?.message);
+        const res = await createProject({
+          name,
+          description,
+          technology,
+          link,
+        });
+        if (res.data.success) {
+          setType("create");
+          toast.success(res.data.message);
+        }
       }
       if (type === "update") {
-        const res = await updateProject(
+        const res = await updateProject({
           id,
           name,
-          technology,
           description,
-          link
-        );
-        if (res?.success) {
+          technology,
+          link,
+        });
+        if (res.data.success) {
           setType("create");
-          toast.success(res?.message);
+          toast.success(res.data.message);
         }
       }
     } catch (error) {
-      toast.error(error.message);
-    } finally {
-      setLoading(false);
+      toast.error(error?.data.message);
     }
-
     setFormData({
       name: "",
       description: "",
@@ -104,9 +113,13 @@ export default function Form({ type, setType, id }) {
           />
         </div>
 
-        <button type="submit" className="submit-button">
-          {loading ? (
-            <ClipLoader loading={loading} size={15} color="white" />
+        <button
+          type="submit"
+          className="submit-button"
+          disabled={createLoading || updateLoading}
+        >
+          {createLoading || updateLoading ? (
+            <ClipLoader loading={true} size={15} color="white" />
           ) : (
             type
           )}

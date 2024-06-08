@@ -1,21 +1,25 @@
 import React, { useState } from "react";
+import { FaBitbucket } from "react-icons/fa";
+import { toast } from "react-hot-toast";
+import ClipLoader from "react-spinners/ClipLoader";
 import {
   useGetProjectQuery,
   useDeleteMsgMutation,
   useGetMsgQuery,
 } from "../redux/api";
-import Form from "./Form"; 
-import DashCard from "./DashCard"; 
-import ClipLoader from "react-spinners/ClipLoader"; 
-import { FaBitbucket } from "react-icons/fa"; 
-import { toast } from "react-hot-toast"; 
+import Form from "./Form";
+import DashCard from "./DashCard";
 
 const Dashboard = () => {
   const [formType, setFormType] = useState("create");
   const [updateId, setUpdateId] = useState(null);
 
-  const { data: projects, isLoading, isError } = useGetProjectQuery();
-  const { data: message } = useGetMsgQuery();
+  const {
+    data: projects = [],
+    isLoading,
+    isError,
+  } = useGetProjectQuery() ?? {};
+  const { data: message = [] } = useGetMsgQuery();
   const [deleteMsg, { isLoading: deleteLoading }] = useDeleteMsgMutation();
 
   const checkType = (type) => {
@@ -30,7 +34,7 @@ const Dashboard = () => {
     try {
       const res = await deleteMsg(id).unwrap();
       if (res.success) {
-        toast.success(res.message);
+        toast.success(res?.message);
       }
     } catch (error) {
       toast.error(error?.data.message);
@@ -62,22 +66,16 @@ const Dashboard = () => {
         </div>
         <div className="dash_container">
           <div className="dash_left">
-            {/* Form component for creating/updating projects */}
             <Form type={formType} setType={setFormType} id={updateId} />
           </div>
-
           <div className="dash_right">
             {isLoading ? (
-              // Show loading spinner while fetching projects
               <div className="flex">
                 <ClipLoader loading={isLoading} size={20} color="white" />
               </div>
             ) : isError ? (
-              // Show error message if fetching projects fails
               <div className="error">Failed to load projects.</div>
             ) : (
-              // Display project cards if data is available
-              projects &&
               projects.map((item) => (
                 <DashCard
                   key={item._id}
@@ -93,10 +91,7 @@ const Dashboard = () => {
       <div className="dash_msg">
         <div className="dash_msg_container">
           <h1>Messages</h1>
-
-          {/* Example messages (replace with actual message fetching logic) */}
           {deleteLoading ? (
-            // Show loading spinner during delete operation
             <div className="flex">
               <ClipLoader loading={deleteLoading} size={20} color="white" />
             </div>

@@ -5,5 +5,5 @@ import verifyToken from "../utils/verifyToken.js";
 export const contactRouter = express.Router();
 
 contactRouter.route("/").post(contact);
-contactRouter.route("/").get(verifyToken, getContact);
-contactRouter.route("/:id").delete(verifyToken,deleteContact);
+contactRouter.route("/").get(getContact);
+contactRouter.route("/:id").delete(deleteContact);
