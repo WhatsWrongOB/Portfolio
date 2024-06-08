@@ -1,30 +1,30 @@
 import React, { useState } from "react";
-import phone from "/public/phone.svg";
-import msg from "/public/msg.svg";
-import { useStore } from "../Context";
-import { toast } from "react-hot-toast";
-import ClipLoader from "react-spinners/ClipLoader";
+import phone from "/public/phone.svg"; // Image for the phone button
+import msg from "/public/msg.svg"; // Image for the email button
+import { toast } from "react-hot-toast"; // Library for toast notifications
+import ClipLoader from "react-spinners/ClipLoader"; // Spinner component for loading state
+import { useCreateMsgMutation } from "../redux/api"; // Hook for creating messages
 
 const Contact = () => {
+
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(false);
-  const { contact } = useStore();
+
+  const [createMsg, { isLoading }] = useCreateMsgMutation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     try {
-      setLoading(true);
-      const data = await contact(email, message);
-      if (data.success) {
-        toast.success(data.message);
+      const res = await createMsg({ email, message }).unwrap();
+
+      if (res.success) {
+        toast.success(res.message);
         setEmail("");
         setMessage("");
-      }
+      } 
     } catch (error) {
-      toast.error(error);
-    } finally {
-      setLoading(false);
+      toast.error(error?.data.message);
     }
   };
 
@@ -48,9 +48,7 @@ const Contact = () => {
             <p>03204872665</p>
           </button>
         </div>
-        <h3 className="contact_heading_two">
-          Get in touch using the form below
-        </h3>
+        <h3 className="contact_heading_two">Get in touch using the form below</h3>
         <form className="contact_form" onSubmit={handleSubmit}>
           <input
             className="cemail"
@@ -71,9 +69,9 @@ const Contact = () => {
             onChange={(e) => setMessage(e.target.value)}
             required
           ></textarea>
-          <button type="send" className="submit">
-            {loading ? (
-              <ClipLoader loading={loading} size={15} color="white" />
+          <button type="submit" className="submit" disabled={isLoading}>
+            {isLoading ? (
+              <ClipLoader loading={isLoading} size={15} color="white" />
             ) : (
               "Submit"
             )}

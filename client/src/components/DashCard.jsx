@@ -5,14 +5,19 @@ import { useStore } from "../Context";
 import { toast } from "react-hot-toast";
 
 const DashCard = ({ project, check, getId }) => {
-  const { deleteProject } = useStore();
+
+  const [loading, setloading] = useState(false)
 
   const handleDelete = async (id) => {
     try {
-      const res = await deleteProject(id);
-      if (res.success) toast.success(res.message);
+      setloading(true);
+      const { data } = await axios.delete(`${Url}/project/delete/${id}`);
+      return data;
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.response.data.message);
+      return false;
+    } finally {
+      setloading(false);
     }
   };
 

@@ -9,7 +9,7 @@ import verifyToken from "../utils/verifyToken.js";
 
 export const projectRouter = express.Router();
 
-projectRouter.route("/get").get(getProject);
-projectRouter.route("/add").post(verifyToken, addProject);
-projectRouter.route("/delete/:id").delete(verifyToken, deleteProject);
-projectRouter.route("/update/:id").patch(verifyToken, updateProject);
+projectRouter.route("/").get(getProject);
+projectRouter.route("/").post(verifyToken, addProject);
+projectRouter.route("/:id").delete(verifyToken, deleteProject);
+projectRouter.route("/:id").patch(verifyToken, updateProject);

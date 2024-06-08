@@ -1,20 +1,27 @@
 import React from "react";
-import "./PortfolioCard";
+import ClipLoader from "react-spinners/ClipLoader";
 import PortfolioCard from "./PortfolioCard";
-import { useStore } from "../Context";
+import { useGetProjectQuery } from "../redux/api";
 
 const Portfolio = () => {
-  const { projects } = useStore();
+  
+  const { data, isLoading, isError } = useGetProjectQuery();
 
   return (
     <section id="portfolio">
-      <h2 className="portfolio_heading">
-        My Portfolio
-      </h2>
+      <h2 className="portfolio_heading">My Portfolio</h2>
       <div className="portfolio_container">
-        {projects.map((project) => (
-          <PortfolioCard key={project.id} project={project} />
-        ))}
+        {isLoading ? (
+          <ClipLoader loading={isLoading} size={20} color="white" />
+        ) : isError ? (
+          <div>Error loading projects.</div>
+        ) : data && data.length > 0 ? (
+          data.map((project) => (
+            <PortfolioCard key={project.id} project={project} />
+          ))
+        ) : (
+          <div>No projects available.</div>
+        )}
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { toast } from "react-hot-toast";
 
 const AppContext = createContext();
 
@@ -30,10 +31,11 @@ const AppProvider = ({ children }) => {
 
       if (data.success) {
         setIsAuthenticated(true);
+        console.log(data)
       }
       return data;
     } catch (error) {
-      console.error("Login error:", error);
+      toast.error(error.response.data.message);
       return false;
     } finally {
       setLoading(false);
@@ -56,7 +58,7 @@ const AppProvider = ({ children }) => {
       );
       return data;
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.message);
       return false;
     }
   };
@@ -79,7 +81,7 @@ const AppProvider = ({ children }) => {
       );
       return data;
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.message);
       return false;
     }
   };
@@ -89,7 +91,7 @@ const AppProvider = ({ children }) => {
       const { data } = await axios.get(`${Url}/project/get`);
       setProjects(data);
     } catch (error) {
-      console.log(error.message);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -98,7 +100,7 @@ const AppProvider = ({ children }) => {
       const { data } = await axios.get(`${Url}/contact/get`);
       setMessages(data.messages);
     } catch (error) {
-      console.log(error.message);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -108,7 +110,7 @@ const AppProvider = ({ children }) => {
       const { data } = await axios.delete(`${Url}/project/delete/${id}`);
       return data;
     } catch (error) {
-      console.log(error.message);
+      toast.error(error.response.data.message);
       return false;
     } finally {
       setdeleteLoading(false);
@@ -126,7 +128,7 @@ const AppProvider = ({ children }) => {
       });
       return data;
     } catch (error) {
-      console.log(error.message);
+      toast.error(error.response.data.message);
       return false;
     } finally {
       setupdateLoading(false);
@@ -138,7 +140,7 @@ const AppProvider = ({ children }) => {
       const { data } = await axios.get(`${Url}/auth/logout`);
       return data;
     } catch (error) {
-      console.log(error.message);
+      toast.error(error.response.data.message);
       return false;
     }
   };
@@ -148,15 +150,14 @@ const AppProvider = ({ children }) => {
       const { data } = await axios.delete(`${Url}/contact/delete/${id}`);
       return data;
     } catch (error) {
-      console.log(error.message);
+      toast.error(error.response.data.message);
       return false;
-    } finally {
-    }
+    } 
   };
 
   useEffect(() => {
     getMsg();
-  }, [isAuthenticated, deleteContact, message]);
+  }, []);
 
   useEffect(() => {
     getProject();
@@ -168,7 +169,6 @@ const AppProvider = ({ children }) => {
         login,
         logout,
         isAuthenticated,
-        contact,
         addProject,
         deleteProject,
         projects,

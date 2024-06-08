@@ -15,7 +15,7 @@ export const getContact = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      message: "Message send successfully",
+      message: "Message recieve successfully",
       messages,
     });
   } catch (error) {

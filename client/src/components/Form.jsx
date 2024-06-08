@@ -29,7 +29,7 @@ export default function Form({ type, setType, id }) {
 
       if (type === "create") {
         const res = await addProject(name, technology, description, link);
-        if (res.success) toast.success(res.message);
+        if (res?.success) toast.success(res?.message);
       }
       if (type === "update") {
         const res = await updateProject(
@@ -39,9 +39,9 @@ export default function Form({ type, setType, id }) {
           description,
           link
         );
-        if (res.success) {
+        if (res?.success) {
           setType("create");
-          toast.success(res.message);
+          toast.success(res?.message);
         }
       }
     } catch (error) {

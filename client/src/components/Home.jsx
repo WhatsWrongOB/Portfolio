@@ -19,7 +19,7 @@ const Home = () => {
               using a range of technologies and programming languages.
             </p>
             <a className="btn_a" href={resume} target="blank">
-              <button class="btn-79">
+              <button className="btn-79">
                 <span>Download Cv</span>
               </button>
             </a>
