@@ -6,21 +6,35 @@ import {
   useGetProjectQuery,
   useDeleteMsgMutation,
   useGetMsgQuery,
+  useLogoutQuery,
 } from "../redux/api";
 import Form from "./Form";
 import DashCard from "./DashCard";
+import { useDispatch } from "react-redux";
+import { signUp } from "../redux/reducers";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [formType, setFormType] = useState("create");
   const [updateId, setUpdateId] = useState(null);
 
   const {
     data: projects = [],
-    isLoading,
-    isError,
+    isLoading: projectsLoading,
+    isError: projectsError,
   } = useGetProjectQuery() ?? {};
-  const { data: message = [] } = useGetMsgQuery();
+
+  const {
+    data,
+    isLoading: messagesLoading,
+    isError: messagesError,
+  } = useGetMsgQuery() ?? {};
+
   const [deleteMsg, { isLoading: deleteLoading }] = useDeleteMsgMutation();
+
+  const { data: logout } = useLogoutQuery();
 
   const checkType = (type) => {
     setFormType(type);
@@ -41,9 +55,22 @@ const Dashboard = () => {
     }
   };
 
+  const handleLogout = () => {
+    if (logout?.success) {
+      toast.success(logout.message);
+      dispatch(signUp());
+      navigate("/login");
+    }
+  };
+
   return (
     <>
       <section className="projects">
+        <div className="logout_div">
+          <button className="logout_btn" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
         <div className="projects_page_top">
           <h1>Admin Panel 😍</h1>
           <p>Here you can add, edit and delete your personal projects</p>
@@ -69,11 +96,11 @@ const Dashboard = () => {
             <Form type={formType} setType={setFormType} id={updateId} />
           </div>
           <div className="dash_right">
-            {isLoading ? (
+            {projectsLoading ? (
               <div className="flex">
-                <ClipLoader loading={isLoading} size={20} color="white" />
+                <ClipLoader loading={projectsLoading} size={20} color="white" />
               </div>
-            ) : isError ? (
+            ) : projectsError ? (
               <div className="error">Failed to load projects.</div>
             ) : (
               projects.map((item) => (
@@ -91,18 +118,29 @@ const Dashboard = () => {
       <div className="dash_msg">
         <div className="dash_msg_container">
           <h1>Messages</h1>
-          {deleteLoading ? (
+          {messagesLoading ? (
             <div className="flex">
-              <ClipLoader loading={deleteLoading} size={20} color="white" />
+              <ClipLoader loading={messagesLoading} size={20} color="white" />
             </div>
+          ) : messagesError ? (
+            <div className="error">Failed to load messages.</div>
           ) : (
-            message.map((item) => (
+            data &&
+            data.messages.map((item) => (
               <div className="msg" key={item._id}>
                 <div
                   className="msg_delete"
                   onClick={() => handleMsgDel(item._id)}
                 >
-                  <FaBitbucket color="red" />
+                  {deleteLoading ? (
+                    <ClipLoader
+                      loading={deleteLoading}
+                      size={10}
+                      color="black"
+                    />
+                  ) : (
+                    <FaBitbucket color="red" />
+                  )}
                 </div>
                 <h4>From : {item.email}</h4>
                 <h5>Message : {item.message}</h5>

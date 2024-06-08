@@ -30,7 +30,7 @@ export const portfolioAPI = createApi({
 
     createProject: builder.mutation({
       query: (newProject) => ({
-        url: "/project/",
+        url: "/project",
         method: "POST",
         body: newProject,
       }),
@@ -40,7 +40,7 @@ export const portfolioAPI = createApi({
     updateProject: builder.mutation({
       query: (updatedProject) => ({
         url: `/project/${updatedProject.id}`,
-        method: "PUT",
+        method: "PATCH",
         body: updatedProject,
       }),
       invalidatesTags: ["Project"],
@@ -71,7 +71,7 @@ export const portfolioAPI = createApi({
 
     deleteMsg: builder.mutation({
       query: (id) => ({
-        url: `/delete/${id}`,
+        url: `/contact/${id}`,
         method: "DELETE",
       }),
       invalidatesTags: ["Message"],

@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import File from "/public/file.svg";
 import { FaBitbucket, FaEdit } from "react-icons/fa";
 import { toast } from "react-hot-toast";
-import { useDeleteMsgMutation } from "../redux/api";
+import { useDeleteProjectMutation } from "../redux/api";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const DashCard = ({ project, check, getId }) => {
-  const [deleteMsg, { isLoading }] = useDeleteMsgMutation();
+  const [deleteProject, { isLoading: deleteLoading }] =
+    useDeleteProjectMutation();
 
   const handleDelete = async (id) => {
     try {
-      const response = await deleteMsg(id);
+      const response = await deleteProject(id);
+      console.log(response);
       if (response.data.success) {
         toast.success(response.data.message);
       }
@@ -31,7 +34,11 @@ const DashCard = ({ project, check, getId }) => {
           <img className="file_img" src={File} alt="file" />
           <div className="github_img">
             <div onClick={() => handleDelete(project._id)}>
-              <FaBitbucket color="red" />
+              {deleteLoading ? (
+                <ClipLoader loading={deleteLoading} size={10} color="black" />
+              ) : (
+                <FaBitbucket color="red" />
+              )}
             </div>
             <div onClick={() => handleUpdate(project._id)}>
               <FaEdit color="green" />

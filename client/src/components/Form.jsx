@@ -53,7 +53,7 @@ export default function Form({ type, setType, id }) {
         });
         if (res.data.success) {
           setType("create");
-          toast.success(res.data.message);
+          toast.success(res?.data.message);
         }
       }
     } catch (error) {
@@ -78,7 +78,7 @@ export default function Form({ type, setType, id }) {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            required={type === "create"}
+            required={true}
           />
         </div>
         <div className="form-group">
@@ -88,7 +88,7 @@ export default function Form({ type, setType, id }) {
             name="description"
             value={formData.description}
             onChange={handleChange}
-            required={type === "create"}
+            required={true}
           />
         </div>
 
@@ -99,7 +99,7 @@ export default function Form({ type, setType, id }) {
             name="link"
             value={formData.link}
             onChange={handleChange}
-            required={type === "create"}
+            required={true}
           />
         </div>
         <div className="form-group">
@@ -109,7 +109,7 @@ export default function Form({ type, setType, id }) {
             name="technology"
             value={formData.technology}
             onChange={handleChange}
-            required={type === "create"}
+            required={true}
           />
         </div>
 
