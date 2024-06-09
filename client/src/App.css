@@ -421,7 +421,7 @@ nav {
 }
 
 .inner_menu a:hover {
-  color: gainsboro;
+  color: #17e86e;
 }
 
 .user_icon {
@@ -431,6 +431,10 @@ nav {
 
 .user_icon:hover {
   color: #157c40;
+}
+
+.close_toogle{
+  padding: 5px 0px 0px 0px;
 }
 
 @media screen and (max-width: 800px) {
@@ -445,8 +449,15 @@ nav {
 }
 
 @media screen and (max-width: 800px) {
+  .close_toogle {
+    display: none;
+  }
+
   .hamburger {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
   }
 
   .inner_menu {
@@ -455,8 +466,9 @@ nav {
     padding: 20px 0px;
     position: absolute;
     top: 70px;
-    left: -100%;
-    background-color: #212121;
+    left: -105%;
+    background-color: white;
+    color: black;
     transition: all ease-in-out 0.4s;
   }
 
@@ -539,7 +551,6 @@ nav {
   font-size: 1.1rem;
   line-height: 26px;
   font-weight: lighter;
-  color: rgb(228, 226, 226) !important;
 }
 
 .home_right {
@@ -598,7 +609,6 @@ nav {
 
   .home_content p {
     font-size: 1.1rem;
-    color: rgb(228, 226, 226) !important;
   }
 
   .home_heading {
@@ -659,7 +669,6 @@ nav {
 .about_para_two {
   font-size: 1.1rem;
   line-height: 25px;
-  color: rgb(224, 219, 219) !important;
 }
 
 .skill_heading {
@@ -1320,10 +1329,6 @@ input {
 
 .logout:hover {
   background-color: #157c40;
-}
-
-.line ul li {
-  color: rgb(228, 224, 224);
 }
 
 @media screen and (max-width: 500px) {

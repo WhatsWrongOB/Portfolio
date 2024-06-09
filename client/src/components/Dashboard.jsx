@@ -59,7 +59,7 @@ const Dashboard = () => {
     if (logout?.success) {
       toast.success(logout.message);
       dispatch(signUp());
-      navigate("/login");
+      navigate("/");
     }
   };
 
