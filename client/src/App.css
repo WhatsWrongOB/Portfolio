@@ -26,6 +26,18 @@ li {
   font-size: 1.15rem !important;
 }
 
+.error {
+  width: 100vw;
+  height: 100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.error .home_heading{
+  font-size: 2rem;
+}
+
 ::-webkit-scrollbar {
   width: 9px;
 }
@@ -433,7 +445,7 @@ nav {
   color: #157c40;
 }
 
-.close_toogle{
+.close_toogle {
   padding: 5px 0px 0px 0px;
 }
 

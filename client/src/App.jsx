@@ -6,7 +6,8 @@ import Combine from "./Combine";
 import Login from "./components//Login";
 import Dashboard from "./components//Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
-import 'animate.css';
+import "animate.css";
+import Error from "./components/Error";
 
 function App() {
   return (
@@ -14,10 +15,11 @@ function App() {
       <Toaster />
       <Routes>
         <Route exact path="/" element={<Combine />} />
-        <Route exact path="/login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route element={<PrivateRoute />}>
           <Route exact path="/dashboard" element={<Dashboard />} />
         </Route>
+        <Route exact path="*" element={<Error />} />
       </Routes>
     </Router>
   );

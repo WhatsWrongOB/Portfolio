@@ -74,11 +74,11 @@ const Navbar = () => {
               Contact
             </Link>
           </li>
-          <li className="link">
+          {/* <li className="link">
             <RouterLink to="/login">
               <FaUser size={20} className="user_icon" />
             </RouterLink>
-          </li>
+          </li> */}
         </div>
         <div className="hamburger">
           <div
