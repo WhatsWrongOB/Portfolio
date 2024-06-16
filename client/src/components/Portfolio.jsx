@@ -4,7 +4,6 @@ import PortfolioCard from "./PortfolioCard";
 import { useGetProjectQuery } from "../redux/api";
 
 const Portfolio = () => {
-  
   const { data, isLoading, isError } = useGetProjectQuery();
 
   return (
@@ -17,7 +16,7 @@ const Portfolio = () => {
           <div>Error loading projects.</div>
         ) : data && data.length > 0 ? (
           data.map((project) => (
-            <PortfolioCard key={project.id} project={project} />
+            <PortfolioCard key={project._id} project={project} />
           ))
         ) : (
           <div>No projects available.</div>

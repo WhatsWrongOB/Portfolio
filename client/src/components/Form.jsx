@@ -38,7 +38,7 @@ export default function Form({ type, setType, id }) {
           technology,
           link,
         });
-        if (res.data.success) {
+        if (res?.data.success) {
           setType("create");
           toast.success(res.data.message);
         }

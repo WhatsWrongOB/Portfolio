@@ -5,9 +5,9 @@ import user from "/public/user.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import ClipLoader from "react-spinners/ClipLoader";
-import { useLoginMutation } from "../redux/api"; 
 import { useDispatch } from "react-redux";
 import { signIn } from "../redux/reducers";
+import { useLoginMutation } from "../redux/api";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const Login = () => {
     password: "",
   });
 
-  const [login, { isLoading }] = useLoginMutation(); 
+  const [login, { isLoading }] = useLoginMutation();
 
   const handleShowPass = () => {
     setActive(!active);
@@ -42,7 +42,8 @@ const Login = () => {
         navigate("/dashboard");
       }
     } catch (err) {
-      const errorMessage = err?.data?.message || "Login failed. Please try again.";
+      const errorMessage =
+        err?.data?.message || "Login failed. Please try again.";
       toast.error(errorMessage);
     }
   };

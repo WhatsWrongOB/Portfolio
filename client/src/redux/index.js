@@ -5,7 +5,7 @@ import { portfolioAPI } from "./api";
 const store = configureStore({
   reducer: {
     auth: authReducer,
-    [portfolioAPI.reducerPath]: portfolioAPI.reducer
+    [portfolioAPI.reducerPath]: portfolioAPI.reducer,
   },
   middleware: (mid) => [...mid(), portfolioAPI.middleware],
 });

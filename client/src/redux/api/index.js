@@ -4,17 +4,15 @@ export const portfolioAPI = createApi({
   reducerPath: "portfolioAPI",
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_SERVER,
-    credentials: 'include',
+    credentials: "include",
   }),
-  tagTypes: ["Project", "Message"],
+  tagTypes: [],
   endpoints: (builder) => ({
-    // _______________Authentication_______________
     login: builder.mutation({
       query: (credentials) => ({
         url: "/auth/login",
         method: "POST",
         body: credentials,
-        credentials: "include",
       }),
     }),
 
@@ -22,14 +20,11 @@ export const portfolioAPI = createApi({
       query: () => ({
         url: "/auth/logout",
         method: "GET",
-        credentials: "include",
       }),
     }),
 
-    // _______________Projects_______________
     getProject: builder.query({
       query: () => "/project",
-      providesTags: ["Project"],
     }),
 
     createProject: builder.mutation({
@@ -38,7 +33,6 @@ export const portfolioAPI = createApi({
         method: "POST",
         body: newProject,
       }),
-      invalidatesTags: ["Project"],
     }),
 
     updateProject: builder.mutation({
@@ -47,7 +41,6 @@ export const portfolioAPI = createApi({
         method: "PATCH",
         body: updatedProject,
       }),
-      invalidatesTags: ["Project"],
     }),
 
     deleteProject: builder.mutation({
@@ -55,13 +48,10 @@ export const portfolioAPI = createApi({
         url: `/project/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["Project"],
     }),
 
-    // _______________Messages_______________
     getMsg: builder.query({
       query: () => "/contact",
-      providesTags: ["Message"],
     }),
 
     createMsg: builder.mutation({
@@ -70,7 +60,6 @@ export const portfolioAPI = createApi({
         method: "POST",
         body: newMsg,
       }),
-      invalidatesTags: ["Message"],
     }),
 
     deleteMsg: builder.mutation({
@@ -78,7 +67,6 @@ export const portfolioAPI = createApi({
         url: `/contact/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["Message"],
     }),
   }),
 });

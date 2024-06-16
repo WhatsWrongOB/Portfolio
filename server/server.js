@@ -12,11 +12,24 @@ dotenv.config({ path: "./config/config.env" });
 const app = express();
 
 // CORS configuration
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://obaidali.netlify.app",
+];
 
 app.use(
   cors({
-    origin: "*",
-    credentials: true,
+    origin: function(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    credentials: true, 
+    allowedHeaders: ["Content-Type", "Authorization"],
+    exposedHeaders: ["Set-Cookie"], 
   })
 );
 
@@ -32,15 +45,6 @@ app.use("/contact", contactRouter);
 // Default route
 app.use("/", (req, res) => {
   res.send("Server working");
-});
-
-// Error handling middleware
-app.use((err, req, res, next) => {
-  if (err instanceof Error && err.message.includes("Not allowed by CORS")) {
-    res.status(403).json({ message: "CORS error: Access denied" });
-  } else {
-    next(err);
-  }
 });
 
 const PORT = process.env.PORT || 3000;

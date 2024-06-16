@@ -4,6 +4,7 @@ import { User } from "../models/user.js";
 const verifyToken = async (req, res, next) => {
   try {
     const token = req.cookies?.token;
+    console.log(token)
     if (!token) {
       return res.status(400).json({
         success: false,
