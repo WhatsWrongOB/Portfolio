@@ -7,30 +7,40 @@ import { userRouter } from "./routes/auth.js";
 import { projectRouter } from "./routes/project.js";
 import { contactRouter } from "./routes/contact.js";
 
-
 dotenv.config({ path: "./config/config.env" });
 
 const app = express();
 
 // CORS configuration
-const corsOptions = {
-  origin: "*", 
-  methods: "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-  credentials: true,
-};
-app.use(cors(corsOptions));
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://obaidali.netlify.app",
+];
 
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
+    exposedHeaders: ["Set-Cookie"],
+  })
+);
 
 // Middleware
 app.use(cookieParser());
 app.use(express.json());
 
-
 // Routes
 app.use("/auth", userRouter);
 app.use("/project", projectRouter);
 app.use("/contact", contactRouter);
-
 
 // Default route
 app.use("/", (req, res) => {

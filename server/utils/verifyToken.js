@@ -3,8 +3,7 @@ import { User } from "../models/user.js";
 
 const verifyToken = async (req, res, next) => {
   try {
-    const { token } = req.cookies;
-
+    const token = req.cookies?.token;
     if (!token) {
       return res.status(400).json({
         success: false,
@@ -22,7 +21,7 @@ const verifyToken = async (req, res, next) => {
       });
     }
 
-    req.user = user
+    req.user = user;
 
     next();
   } catch (error) {
