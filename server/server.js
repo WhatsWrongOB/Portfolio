@@ -12,24 +12,11 @@ dotenv.config({ path: "./config/config.env" });
 const app = express();
 
 // CORS configuration
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://obaidali.netlify.app",
-];
 
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    methods: "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+    origin: "*",
     credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization"],
-    exposedHeaders: ["Set-Cookie"],
   })
 );
 
