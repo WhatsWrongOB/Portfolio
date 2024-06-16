@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-
 export const portfolioAPI = createApi({
   reducerPath: "portfolioAPI",
   baseQuery: fetchBaseQuery({
@@ -8,18 +7,22 @@ export const portfolioAPI = createApi({
   }),
   tagTypes: ["Project", "Message"],
   endpoints: (builder) => ({
-
     // _______________Authentication_______________
     login: builder.mutation({
       query: (credentials) => ({
         url: "/auth/login",
         method: "POST",
         body: credentials,
+        credentials: "include",
       }),
     }),
 
     logout: builder.query({
-      query: () => "/auth/logout",
+      query: () => ({
+        url: "/auth/logout",
+        method: "GET",
+        credentials: "include",
+      }),
     }),
 
     // _______________Projects_______________
@@ -80,7 +83,7 @@ export const portfolioAPI = createApi({
 });
 
 export const {
-  useLoginMutation, 
+  useLoginMutation,
   useLogoutQuery,
   useGetProjectQuery,
   useCreateProjectMutation,
