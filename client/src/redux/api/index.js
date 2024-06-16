@@ -4,7 +4,6 @@ export const portfolioAPI = createApi({
   reducerPath: "portfolioAPI",
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_SERVER,
-    credentials: "include",
   }),
   tagTypes: [],
   endpoints: (builder) => ({
